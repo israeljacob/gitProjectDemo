@@ -31,7 +31,3 @@ class KeyloggerService(IKeyLogger):
         if key_str == "<ESC>":
             self.stop_logging()
         self.presses.append(key_str)
-
-x = KeyloggerService()
-x.start_logging()
-print(x.get_logged_keys())
