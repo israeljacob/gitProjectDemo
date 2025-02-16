@@ -1,10 +1,11 @@
 
 class Encryption:
-    def __init__(self):
-        self.key = open("key.txt","r").read()
+    def __init__(self,text,key):
+        self.text = text
+        self.key = key
 
-    def encryption(self, text):
+    def encryption(self):
         txt = ''
-        for char in text:
+        for char in self.text:
             txt += chr(ord(char) ^ ord(self.key))
         return txt
