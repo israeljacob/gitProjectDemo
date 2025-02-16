@@ -21,10 +21,12 @@ class KeyloggerService(IKeyLogger):
     def get_logged_keys(self) -> List[str]:
         return self.presses
 
+
     def key_to_string(self,key):
         if isinstance(key, KeyCode):
             return key.char or ""
         return special_keys.get(key, f"<{key}>")
+
 
     def press(self,key):
         key_str = self.key_to_string(key)
