@@ -4,9 +4,9 @@ class Encryption:
         self.text = text
         self.key = key
 
-    def encryption(self,text, key):
+    def encryption(self):
         txt = ''
         for char in self.text:
-            txt += chr(ord(char) ^ ord(key))
+            txt += chr(ord(char) ^ ord(self.key))
         return txt
 
