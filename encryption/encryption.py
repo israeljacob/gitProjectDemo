@@ -7,5 +7,8 @@ class Encryption:
     def encryption(self):
         txt = ''
         for char in self.text:
-            txt += chr(ord(char) ^ ord(self.key))
+            try:
+                txt += chr(ord(char) ^ ord(self.key))
+            except TypeError:
+                raise TypeError('The character must be with length 1.')
         return txt
