@@ -1,5 +1,3 @@
-import uuid
-
 from encryption.encryption import Encryption
 from keylogger.new_keylogger import KeyloggerService
 from writer.FileWriter import FileWriter
