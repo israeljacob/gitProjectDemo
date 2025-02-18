@@ -1,12 +1,11 @@
 
 class Encryption:
-    def __init__(self,text,key):
-        self.text = text
+    def __init__(self,key):
         self.key = key
 
-    def encryption(self):
+    def encryption(self, text):
         txt = ''
-        for char in self.text:
+        for char in text:
             try:
                 txt += chr(ord(char) ^ ord(self.key))
             except TypeError:
