@@ -7,7 +7,7 @@ def main():
         with open(data[1]) as f:
             file = f.read()
             for chr in file:
-                print(Encryption(chr,data[2]).encryption(), end="")
+                print(Encryption(data[2]).encryption(chr), end="")
 
 if __name__ == "__main__":
     main()
