@@ -1,12 +1,6 @@
 import os
-import sys
 from datetime import datetime
 from flask import Flask, request, jsonify
-
-file = open('path.txt', 'r')
-FOLDER = file.read()
-file.close()
-sys.path.append(FOLDER)
 
 from encryption.decryption import Decryption
 
