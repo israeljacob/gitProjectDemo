@@ -64,5 +64,21 @@ def upload_data():
     logging.info('Data saved to ' + file_path)
     return jsonify({"status": "success", "file": file_path}), 200
 
+
+
+@app.route('/api/list_machines_target_get', methods=['GET'])
+def list_machines():
+    if not os.path.exists(DATA_FOLDER):
+        return jsonify([]), 400
+
+    machines = [folder for folder in os.listdir(DATA_FOLDER) if os.path.isdir(os.path.join(DATA_FOLDER, folder))]
+    return jsonify(machines),200
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+
