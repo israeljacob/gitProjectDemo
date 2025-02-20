@@ -3,11 +3,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 import logging
 import sys
-#import decryption
-file = open("path.txt","r")
-FOLDER = file.read()
-file.close()
-sys.path.append(FOLDER)
+sys.path.append('../encryption')
 from decryption import Decryption
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', filename='app.log', filemode='w')
