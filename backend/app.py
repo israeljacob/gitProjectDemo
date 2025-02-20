@@ -1,8 +1,10 @@
 import os
 from datetime import datetime
 from flask import Flask, request, jsonify
-
+import logging
 from encryption.decryption import Decryption
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', filename='app.log', filemode='w')
 
 CURRENT_FOLDER = os.getcwd()
 PARENT_FOLDER = os.path.abspath(os.path.join(CURRENT_FOLDER, os.pardir))
@@ -43,10 +45,15 @@ def upload_data():
     :return The status of the HTTP request.:
     """
     data = request.data
-    machine_name = data[:14].decode('utf-8')
-    machine_folder = create_machine_folder(machine_name)
-    decrypted_data =  Decryption(KEY).decrypt(data[15:])
+    try:
+        machine_name = data[:14].decode('utf-8')
+        machine_folder = create_machine_folder(machine_name)
+        decrypted_data =  Decryption(KEY).decrypt(data[15:])
+    except Exception as e:
+        logging.error(e)
+        return jsonify({'status': False, 'message': str(e)}), 400
     if not decrypted_data:
+        logging.info('No data received to the server.')
         return jsonify({'message': 'No input decrypted_data provided'}), 400
 
     log_data, data = split_data(decrypted_data)
@@ -54,6 +61,7 @@ def upload_data():
     file_path = os.path.join(machine_folder, generate_log_filename())
     with open(file_path, 'a') as f:
         f.write(log_data + '\n' + data + '\n' * 2)
+    logging.info('Data saved to ' + file_path)
     return jsonify({"status": "success", "file": file_path}), 200
 
 if __name__ == '__main__':
