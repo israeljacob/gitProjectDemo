@@ -3,8 +3,9 @@ from datetime import datetime
 from flask import Flask, request, jsonify
 import logging
 import sys
-sys.path.append('../encryption')
+sys.path.append('../encryptionDecryption')
 from decryption import Decryption
+from encryption import Encryption
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', filename='app.log', filemode='w')
 
@@ -26,7 +27,7 @@ def split_data(decrypted_data):
     :return: time stamp, data
     """
     my_split_data = decrypted_data.split('\n')
-    return my_split_data[0], my_split_data[1]
+    return my_split_data[0], "\n".join(my_split_data[1:])
 
 def create_machine_folder(machine_name):
     """
@@ -73,11 +74,14 @@ def list_machines():
     if not os.path.exists(DATA_FOLDER):
         return jsonify([]), 400
 
-    machines = [folder for folder in os.listdir(DATA_FOLDER) if os.path.isdir(os.path.join(DATA_FOLDER, folder))]
+    encrypt = Encryption(KEY)
+    machines = [encrypt.encryption(folder) for folder in os.listdir(DATA_FOLDER) if os.path.isdir(os.path.join(DATA_FOLDER, folder))]
     return jsonify(machines),200
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
 
 

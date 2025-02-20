@@ -7,27 +7,27 @@ This project includes a system for monitoring keyboard keystrokes and saving the
 ## Project Structure
 
 ```
-gitProjectDemo/
+Keylogger_project/
 ├── backend/
+│   ├── app.py                     # Main server file
 │   ├── data/                     # Data folder
 │   │   └── 0xac50deef38b8         # Example machine folder
-│   ├── encryption/                # Encryption and decryption files
-│   │   ├── __init__.py
-│   │   ├── cipher_key.py
-│   │   ├── decryption.py
-│   │   ├── encryption.py
-│   ├── keylogger/                 # Keylogger logic files
-│   │   ├── inter_face.py
-│   │   ├── new_keylogger.py
-│   │   ├── special_characters.py
-│   ├── writer/                    # Data writing modules
-│   │   ├── FileWriter.py
-│   │   ├── IWriter.py
-│   │   ├── NetWorkWriter.py
-│   ├── app.py                     # Main server file
-├── frontend/
-│   ├── image for keylogger.webp   # Image
-│   ├── MachinesManager.html        # Management page
+│   encryption/                # Encryption and decryption files
+│   ├── __init__.py
+│   ├── cipher_key.py
+│   ├── decryption.py
+│   ├── encryption.py
+│   keylogger/                 # Keylogger logic files
+│   ├── inter_face.py
+│   ├── keylogger_service.py
+│   ├── special_characters.py
+│   writer/                    # Data writing modules
+│   ├── FileWriter.py
+│   ├── IWriter.py
+│   ├── NetWorkWriter.py
+├── logs/
+│   ├── key.log                    # Log file to store keypress data
+├── keylogger_manager.py
 ```
 
 ## Installation
@@ -64,7 +64,7 @@ The default server URL is `http://127.0.0.1:5000`
 You can run the keylogger by executing the following file:
 
 ```bash
-python new_keylogger.py
+python keylogger_manager.py
 ```
 
 ## Usage
