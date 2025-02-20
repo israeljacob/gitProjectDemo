@@ -2,7 +2,13 @@ import os
 from datetime import datetime
 from flask import Flask, request, jsonify
 import logging
-from encryption.decryption import Decryption
+import sys
+#import decryption
+file = open("path.txt","r")
+FOLDER = file.read()
+file.close()
+sys.path.append(FOLDER)
+from decryption import Decryption
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', filename='app.log', filemode='w')
 
@@ -10,7 +16,7 @@ CURRENT_FOLDER = os.getcwd()
 PARENT_FOLDER = os.path.abspath(os.path.join(CURRENT_FOLDER, os.pardir))
 
 DATA_FOLDER = 'data'
-KEY = open(PARENT_FOLDER + '\\key.txt', 'r').read()
+KEY = open(PARENT_FOLDER + '/key.txt', 'r').read()
 app = Flask(__name__)
 
 def generate_log_filename():
