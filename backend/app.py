@@ -1,13 +1,14 @@
 import os
 from datetime import datetime
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import logging
 import sys
 sys.path.append('../encryptionDecryption')
 from decryption import Decryption
 from encryption import Encryption
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', filename='app.log', filemode='w')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', filename='log.txt', filemode='w')
 
 CURRENT_FOLDER = os.getcwd()
 PARENT_FOLDER = os.path.abspath(os.path.join(CURRENT_FOLDER, os.pardir))
@@ -15,6 +16,10 @@ PARENT_FOLDER = os.path.abspath(os.path.join(CURRENT_FOLDER, os.pardir))
 DATA_FOLDER = 'data'
 KEY = open(PARENT_FOLDER + '/key.txt', 'r').read()
 app = Flask(__name__)
+CORS(app)
+OWNERS_FILE = open('Full_Names.txt', 'r')
+LIST_OF_OWNERS = OWNERS_FILE.readlines()
+OWNERS_FILE.close()
 
 def generate_log_filename():
     return "log_" + datetime.now().strftime("%Y-%m-%d") + ".txt"
@@ -40,6 +45,29 @@ def create_machine_folder(machine_name):
     if not os.path.exists(machine_folder):
         os.makedirs(machine_folder)
     return machine_folder
+
+def get_list_of_owners(list_of_machine_names):
+    global LIST_OF_OWNERS
+    return LIST_OF_OWNERS[:len(list_of_machine_names)]
+
+def encrypt_data(names_of_owners):
+    encrypt = Encryption(KEY)
+    for i, name in enumerate(names_of_owners):
+        names_of_owners[i] = encrypt.encryption(name)
+    return names_of_owners
+
+
+def get_machine_name_list():
+    machine_name_list = []
+    for folder in os.listdir(DATA_FOLDER):
+        if os.path.isdir(os.path.join(DATA_FOLDER, folder)):
+            machine_name_list.append(folder)
+    return machine_name_list
+
+def get_machine_name(owner):
+    global LIST_OF_OWNERS
+    index = LIST_OF_OWNERS.index(owner)
+    return LIST_OF_OWNERS[index]
 
 @app.route('/api/upload', methods=['POST'])
 def upload_data():
@@ -68,15 +96,16 @@ def upload_data():
     return jsonify({"status": "success", "file": file_path}), 200
 
 
-
 @app.route('/api/list_machines_target_get', methods=['GET'])
 def list_machines():
     if not os.path.exists(DATA_FOLDER):
         return jsonify([]), 400
-
-    encrypt = Encryption(KEY)
-    machines = [encrypt.encryption(folder) for folder in os.listdir(DATA_FOLDER) if os.path.isdir(os.path.join(DATA_FOLDER, folder))]
-    return jsonify(machines),200
+    machines = get_machine_name_list()
+    if not machines:
+        return jsonify([]), 400
+    names_of_owners = get_list_of_owners(machines)
+    encrypted_owners = encrypt_data(names_of_owners)
+    return jsonify(encrypted_owners),200
 
 if __name__ == '__main__':
     app.run(debug=True)
