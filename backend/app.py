@@ -4,6 +4,9 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import logging
 import sys
+from pathlib import Path
+from data_pull_in_dict import data_pull
+
 sys.path.append('../encryptionDecryption')
 from decryption import Decryption
 from encryption import Encryption
@@ -91,7 +94,7 @@ def upload_data():
 
     file_path = os.path.join(machine_folder, generate_log_filename())
     with open(file_path, 'a') as f:
-        f.write(log_data + '\n' + data + '\n' * 2)
+        f.write("--- "+log_data + ' ---\n' + data + '\n' * 2 )
     logging.info('Data saved to ' + file_path)
     return jsonify({"status": "success", "file": file_path}), 200
 
@@ -106,6 +109,33 @@ def list_machines():
     names_of_owners = get_list_of_owners(machines)
     encrypted_owners = encrypt_data(names_of_owners)
     return jsonify(encrypted_owners),200
+
+@app.route('/api/computer_data/<computer_name>', methods=['GET'])
+def computer_data(computer_name):
+    all_data = dict()
+    all_data_final = dict()
+    global CURRENT_FOLDER
+    folder_path = Path(CURRENT_FOLDER+"/data/")
+    if search_computer(computer_name, folder_path):
+        return "The computer isn't find" , 400
+    folder_path = Path(CURRENT_FOLDER+"/data/" + computer_name)
+    for file in folder_path.iterdir():
+        file_str = str(file)
+        if "log" in file_str:
+            idx_file_name = file_str.find("/log")
+            all_data[file_str[idx_file_name:]] = data_pull(file_str)
+    all_data_final[computer_name] = all_data
+    return all_data_final
+
+def search_computer(computer_name,folder_path):
+    flag = True
+    for folder in folder_path.iterdir():
+        str_folder = str(folder)
+        idx = str_folder.find("/data/") + 6
+        if computer_name == str_folder[idx:]:
+            flag = False
+            break
+    return flag
 
 if __name__ == '__main__':
     app.run(debug=True)
