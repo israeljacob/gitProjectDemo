@@ -123,7 +123,7 @@ def computer_data(owner_name):
     for file in folder_path.iterdir():
         file_str = str(file)
         if "log" in file_str:
-            idx_file_name = file_str.find("/log")
+            idx_file_name = file_str.find("log_")
             all_data[file_str[idx_file_name:]] = data_pull(file_str)
     all_data_final[owner_name] = all_data
     return jsonify(all_data_final), 200
