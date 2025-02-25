@@ -21,7 +21,7 @@ KEY = open(PARENT_FOLDER + '/key.txt', 'r').read()
 app = Flask(__name__)
 CORS(app)
 OWNERS_FILE = open('Full_Names.txt', 'r')
-LIST_OF_OWNERS = OWNERS_FILE.readlines()
+LIST_OF_OWNERS = OWNERS_FILE.read().splitlines()
 OWNERS_FILE.close()
 
 def generate_log_filename():
@@ -70,7 +70,7 @@ def get_machine_name_list():
 def get_machine_name(owner):
     global LIST_OF_OWNERS
     index = LIST_OF_OWNERS.index(owner)
-    return LIST_OF_OWNERS[index]
+    return get_machine_name_list()[index]
 
 @app.route('/api/upload', methods=['POST'])
 def upload_data():
@@ -110,22 +110,23 @@ def list_machines():
     encrypted_owners = encrypt_data(names_of_owners)
     return jsonify(encrypted_owners),200
 
-@app.route('/api/computer_data/<computer_name>', methods=['GET'])
-def computer_data(computer_name):
+@app.route('/api/computer_data/<owner_name>', methods=['GET'])
+def computer_data(owner_name):
+    try:
+        computer_name = get_machine_name(owner_name)
+    except:
+        return jsonify({'status': False, 'message': 'Machine not found'}), 400
     all_data = dict()
     all_data_final = dict()
     global CURRENT_FOLDER
-    folder_path = Path(CURRENT_FOLDER+"/data/")
-    if search_computer(computer_name, folder_path):
-        return "The computer isn't find" , 400
     folder_path = Path(CURRENT_FOLDER+"/data/" + computer_name)
     for file in folder_path.iterdir():
         file_str = str(file)
         if "log" in file_str:
             idx_file_name = file_str.find("/log")
             all_data[file_str[idx_file_name:]] = data_pull(file_str)
-    all_data_final[computer_name] = all_data
-    return all_data_final
+    all_data_final[owner_name] = all_data
+    return jsonify(all_data_final), 200
 
 def search_computer(computer_name,folder_path):
     flag = True
@@ -139,7 +140,6 @@ def search_computer(computer_name,folder_path):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
 
 
 
