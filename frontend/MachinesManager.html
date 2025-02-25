@@ -6,7 +6,27 @@
 </head>
 <body>
     <script src = "MachinesManager.js" defer></script>
-    <ul id="machine_list_ul">
-    </ul>
+    <div id="login">
+        <h1>login</h1>
+        <form id="loginForm" onsubmit="submitDetails(event)">
+            <label for="username">user name:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">connect</button>
+        </form>
+        <div id="errorMessage">
+            <p id="error">
+                One of the details are wrong. Please try again.
+            </p>
+        </div>
+    </div>
+    <div id="machinesList">
+        <ul id="machine_list_ul">
+        </ul>
+    </div>
+    <div id="machineData">
+        <p id="machine_name">khjkgvbl;j</p>
+    </div>
 </body>
 </html>
