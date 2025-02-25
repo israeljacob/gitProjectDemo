@@ -2,39 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Top Secret Project</title>
+    <title>machines list</title>
 </head>
 <body>
     <script src = "MachinesManager.js" defer></script>
-    <div id="login">
-        <h1>login</h1>
-        <form id="loginForm" onsubmit="submitDetails(event)">
-            <label for="username">user name:</label>
-            <input type="text" id="username" name="username">
-            <label for="password">password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">connect</button>
-        </form>
-        <div id="errorMessage">
-            <p id="error">
-                One of the details are wrong. Please try again.
-            </p>
-        </div>
-    </div>
     <div id="machinesList">
         <ul id="machine_list_ul">
         </ul>
-    </div>
-    <div id="machineData">
-        <table id="machine_data_table">
-            <tr>
-                <th>Time stamp</th>
-                <th>Data</th>
-            </tr>
-        </table>
-        <button id="backButton" onclick="goToListPage()">
-            Back
-        </button>
     </div>
 </body>
 </html>
