@@ -20,7 +20,7 @@ body {
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #58a6ff;
+    color: rgb(0, 210, 210);
 }
 
 
@@ -44,6 +44,7 @@ h1 {
 
 
 .computer img {
+    
     width: 80px;
     height: 80px;
 }
@@ -52,7 +53,7 @@ h1 {
 .computer-info {
     margin-top: 10px;
     font-size: 14px;
-    color: #58a6ff;
+    color: rgb(0, 210, 210);
 }
 
 
