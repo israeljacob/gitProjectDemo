@@ -62,8 +62,8 @@ function addListToElement(machinesList, ownersList) {
         computerDiv.className = "computer";
         computerDiv.innerHTML = `
             <img src="https://img.icons8.com/ios-filled/100/58a6ff/computer.png" alt="computer icon">
-            <div class="computer-info">מחשב ${i + 1}</div>
-            <div class="computer-info">בעלים: ${machinesList[i]}</div>
+            <div class="computer-info">computer ${i + 1}</div>
+            <div class="computer-info">owner: ${machinesList[i]}</div>
             <div class="computer-info">MAC: ${ownersList[i]}</div>
         `;
         computerDiv.addEventListener('click', () => { getMachineData(computerDiv, machinesList[i]); });
@@ -74,18 +74,20 @@ function addListToElement(machinesList, ownersList) {
 function applyFilter() {
     const nameFilter = document.getElementById("nameFilter").value.toLowerCase();
     const macFilter = document.getElementById("macFilter").value.toLowerCase();
-    const listElement = document.getElementById("machine_list_ul");
-    const listItems = listElement.getElementsByTagName("li");
+    const computers = document.querySelectorAll("#computersList .computer");
 
-    for (let li of listItems) {
-        const text = li.textContent.toLowerCase();
-        if (text.includes(nameFilter) && text.includes(macFilter)) {
-            li.style.display = "";
+    computers.forEach(computer => {
+        const ownerText = computer.querySelector(".computer-info:nth-child(3)").textContent.toLowerCase();
+        const macText = computer.querySelector(".computer-info:nth-child(4)").textContent.toLowerCase();
+
+        if (ownerText.includes(nameFilter) && macText.includes(macFilter)) {
+            computer.style.display = "block";
         } else {
-            li.style.display = "none";
+            computer.style.display = "none";
         }
-    }
+    });
 }
+
 
 
 /**
