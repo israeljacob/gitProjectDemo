@@ -10,7 +10,20 @@
   <!-- JavaScript file is linked here to handle machine data logic -->
   <script src="MachineData.js" defer></script>
 
+   <div class="filter-container">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate">
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate">
+
+    <label for="dataFilter">Filter by Data:</label>
+    <input type="text" id="dataFilter" placeholder="Search in data...">
+
+  </div>
   <div id="machineData">
+
+
   </div>
   <button id="backButton" onclick="goToListPage()">
     Back

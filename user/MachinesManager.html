@@ -8,9 +8,23 @@
     <link rel="stylesheet" href="MachinesManager.css">
 </head>
 <body>
+
     <div class="container">
         <h1>Computer list</h1>
         <div id="computersList"></div>
+    <!-- Load the JavaScript file that manages the machine list -->
+    <script src = "MachinesManager.js" defer></script>
+
+    <!-- Container for displaying the list of monitored machines -->
+    <label for="nameFilter">Filter name:</label>
+    <input type="text" id="nameFilter" placeholder="Write something...">
+    <br>
+    <br>
+    <label for="macFilter">Filter mac:</label>
+    <input type="text" id="macFilter" placeholder="Write something...">
+    <div id="machinesList">
+        <ul id="machine_list_ul">
+        </ul>
     </div>
     <script src="MachinesManager.js"></script>
 </body>
