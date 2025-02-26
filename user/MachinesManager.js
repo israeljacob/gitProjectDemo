@@ -51,21 +51,21 @@ async function getMachineData(li, button, ownerName) {
  * Populates a list element with machine names and buttons
  * @param {Array<string>} machinesList - List of decrypted machine names
  */
-function addListToElement(machinesList) {
+function addListToElement(machinesList, ownersList) {
     const listElement = document.getElementById('machine_list_ul');
     while (listElement && listElement.firstChild){
         listElement.removeChild(listElement.firstChild);
     }
     if (listElement){
-        machinesList.forEach(machine => {
+        for (let j = 0; j < machinesList.length; j++){
             const li = document.createElement('li');
             const button = document.createElement('button');
-            li.textContent = machine;
+            li.textContent = machinesList[j] + '    ' + ownersList[j];
             button.textContent = 'get data';
             button.addEventListener('click', () => {getMachineData(li, button, machine)});
             listElement.appendChild(li);
             li.appendChild(button);
-        })
+        }
     }
 }
 
@@ -76,8 +76,11 @@ async function main(){
     const keyObject = await fetchKey();
     key = keyObject.key;
     let machinesList = await fetchMachinesList();
+    let ownersList = machinesList[1]
+    machinesList = machinesList[0]
     machinesList = machinesList.map(machine => decrypt(machine, key));
-    addListToElement(machinesList);
+    ownersList = ownersList.map(machine => decrypt(machine, key));
+    addListToElement(machinesList, ownersList);
 }
 
 document.addEventListener("DOMContentLoaded", main);
