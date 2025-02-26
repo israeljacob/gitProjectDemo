@@ -1,5 +1,5 @@
 import requests
-from writer.IWriter import IWriter
+from logger.writer.IWriter import IWriter
 
 
 class NetWorkWriter(IWriter):
