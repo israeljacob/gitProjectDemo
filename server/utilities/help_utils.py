@@ -5,6 +5,16 @@ from config import LIST_OF_OWNERS
 
 
 def data_pull(path):
+    """
+    Reads a log file and extracts timestamped messages into a dictionary.
+
+    Parameters:
+    path (str): Path to the log file.
+
+    Returns:
+    dict: A dictionary where keys are timestamps and values are messages.
+    """
+
     with open(path, encoding="utf-8") as file:
         lines = file.readlines()
 

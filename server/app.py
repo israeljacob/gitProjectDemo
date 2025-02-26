@@ -8,11 +8,8 @@ from pathlib import Path
 from utilities.file_utils import *
 
 from utilities.help_utils import *
-# from utilities import help_utils
-# from utilities import config
 from utilities.config import *
 from utilities.encryption_utils import *
-# from utilities import encryption_utils
 
 app = Flask(__name__)
 CORS(app)
@@ -23,9 +20,17 @@ logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(message)s', fil
 @app.route('/api/upload', methods=['POST'])
 def upload_data():
     """
-    Gets the posted data and manages storing it in the database.
-    :return The status of the HTTP request.:
+    Handles the upload of encrypted data from a machine.
+
+    Process:
+    - Extracts machine name from the first 14 bytes.
+    - Decrypts the remaining data.
+    - Splits log data and saves it to a file.
+
+    Returns:
+        JSON response with status and file path or an error message.
     """
+
     data = request.data
     try:
         machine_name = data[:14].decode('utf-8')
@@ -49,6 +54,17 @@ def upload_data():
 
 @app.route('/api/list_machines_target_get', methods=['GET'])
 def list_machines():
+    """
+    Retrieves a list of monitored machines.
+
+    Process:
+    - Checks if the data folder exists.
+    - Fetches machine names and their owners.
+    - Encrypts the data before sending.
+
+    Returns:
+        JSON response with encrypted owner names and machine names or an error message.
+    """
     if not os.path.exists(DATA_FOLDER):
         return jsonify([]), 400
     machines = get_machine_name_list()
@@ -61,6 +77,16 @@ def list_machines():
 
 @app.route('/api/computer_data/<owner_name>', methods=['GET'])
 def computer_data(owner_name):
+    """
+    Fetches stored logs for a given machine owner.
+
+    Parameters:
+        owner_name (str): Name of the machine owner.
+
+    Returns:
+        JSON response with decrypted logs or an error message.
+    """
+
     try:
         computer_name = get_machine_name(owner_name)
     except:
