@@ -1,113 +1,117 @@
-# Keylogger_project
+# Keylogger Project
 
 ## Project Description
-
-This project includes a system for monitoring keyboard keystrokes and saving the data locally or sending it over the network. The system uses encryption and decryption for security purposes.
+This project is a secure keylogging and monitoring system designed for ethical research and security auditing. It provides a mechanism to capture and analyze keystrokes while ensuring data integrity through encryption. The system allows storing logs locally or securely transmitting them over a network. Additionally, it includes a web-based dashboard for visualizing captured data and managing monitored machines.
 
 ## Project Structure
-
 ```
 Keylogger_project/
-├── backend/
-│   ├── app.py                     # Main server file
-│   ├── data/                     # Data folder
-│   │   └── 0xac50deef38b8         # Example machine folder
-│   encryption/                # Encryption and decryption files
-│   ├── __init__.py
-│   ├── cipher_key.py
-│   ├── decryption.py
-│   ├── encryption.py
-│   keylogger/                 # Keylogger logic files
-│   ├── inter_face.py
-│   ├── keylogger_service.py
-│   ├── special_characters.py
-│   writer/                    # Data writing modules
-│   ├── FileWriter.py
-│   ├── IWriter.py
-│   ├── NetWorkWriter.py
-├── logs/
-│   ├── key.log                    # Log file to store keypress data
-├── keylogger_manager.py
+├── logger/
+│   ├── keylogger/                    # Files responsible for capturing keystrokes
+│   │   ├── inter_face.py             # Interface for keylogger implementation
+│   │   ├── keylogger_service.py      # Keylogger service logic
+│   │   ├── KeyLoggerManager.py       # Manages keylogging operations
+│   │   ├── special_characters.py     # Defines special character mappings
+│   ├── writer/                        # Files for storing captured data
+│   │   ├── FileWriter.py             # Handles local file writing
+│   │   ├── IWriter.py                # Interface for different writing methods
+│   │   ├── NetWorkWriter.py          # Handles sending logs over the network
+├── server/                            # Flask-based API for data management
+│   ├── data/                          # Encrypted logs and configuration files
+│   ├── utilities/
+│   │   ├── config.py                  # Application configuration settings
+│   │   ├── encryption_utils.py        # Encryption utility functions
+│   │   ├── file_utils.py              # File handling utilities
+│   │   ├── help_utils.py              # Helper functions for data processing
+│   ├── app.py                         # Server execution file
+├── user/                              # Web-based user interface
+│   ├── app.py                         # User interface execution file
+│   ├── login.css                      # Stylesheet for login page
+│   ├── login.html                     # Login page
+│   ├── login.js                       # Login logic
+│   ├── MachineData.css                # Stylesheet for machine data page
+│   ├── MachineData.html               # Machine data visualization
+│   ├── MachineData.js                 # Machine data processing logic
+│   ├── MachinesManager.css            # Stylesheet for machine list management
+│   ├── MachinesManager.html           # Machines list management dashboard
+│   ├── MachinesManager.js             # Logic for managing machine list
+│   ├── usernames_and_passwords.json   # Stores user credentials
+├── utilities/
+│   ├── encryptionDecryption/
+│   │   ├── encryption.py              # XOR-based encryption implementation
+│   │   ├── decryption.py              # XOR-based decryption implementation
+│   ├── key.txt                         # Encryption key storage
+├── setup.py                            # Script to check and create required files and directories
 ```
 
 ## Installation
 
 ### Prerequisites
-
-Ensure that the following are installed:
+Ensure that the following are installed on your system:
 - Python 3.8 or later
 - pip (Python package manager)
-- Required third-party libraries (see below)
+- Dependencies listed in `requirements.txt`
 
-### Install Required Libraries
+### Setting Up the Environment
+Before running the system, execute the `setup.py` script, which will verify and create necessary files and directories if they do not exist:
+```sh
+python setup.py
+```
+Additionally, set up the following files:
+1. **full_names.txt** – Add full names to this file, with each name on a new line.
+2. **key.txt** – Insert a single-character encryption key in this file.
+3. **usernames_and_passwords.json** – Populate this JSON file with username-password pairs in the following format:
+```json
+{
+  "username1": "password1",
+  "username2": "password2"
+}
+```
 
-Run the following command to install the necessary libraries:
-
-```bash
-pip install flask requests pynput
+### Installing Required Packages
+To install the necessary dependencies, run the following command:
+```sh
+pip install -r requirements.txt
 ```
 
 ## Running the Project
 
-### Running the Server
-
-To run the Flask server, execute the following command in the `backend` folder:
-
-```bash
-python app.py
+### Starting the Flask Server
+To start the server, execute:
+```sh
+python server/app.py
 ```
+The server will be available at `http://127.0.0.1:5000`
 
-The default server URL is `http://127.0.0.1:5000`
+### Running the User-Side Service
+The **user/app.py** script must be running at all times on the user's machine. It provides the necessary authentication and encryption key information to the frontend JavaScript files:
+```sh
+python user/app.py
+```
+Even if the main server runs on another machine, the user-side service must always be executed locally.
 
 ### Running the Keylogger
-
-You can run the keylogger by executing the following file:
-
-```bash
-python keylogger_manager.py
+To start the keylogger, execute:
+```sh
+python logger/keylogger/KeyLoggerManager.py
 ```
+## Features
+- **Keystroke Logging**: Captures all keystrokes in real-time.
+- **Encryption & Decryption**: Ensures secure data storage.
+- **Local & Network Storage**: Logs can be stored locally or transmitted over a network.
+- **Machine Monitoring**: Supports monitoring multiple machines with encrypted communication.
+- **Web Dashboard**: Provides a user interface to view recorded data.
+- **Authentication System**: Manages user access securely.
+- **Configurable Storage**: Allows flexible storage options based on security needs.
 
-## Usage
+## Security and Legal Disclaimer
+This project is intended for educational and ethical research purposes only. Unauthorized use of keyloggers is illegal and may lead to legal consequences. Use this software responsibly and in compliance with applicable laws.
 
-### Encrypting and Decrypting Data
+## Future Enhancements
+- Strengthen encryption by implementing a more advanced algorithm.
+- Add user authentication system.
+- Develop a graphical interface for log management.
+- Integrate real-time log visualization via the web interface.
 
-#### Encryption
-
-The `cipher_key.py` file takes an input file and text for encryption:
-
-```bash
-python cipher_key.py input.txt my_key
-```
-
-#### Decryption
-
-```python
-decryptor = Decryption("my_key")
-plaintext = decryptor.decrypt(encrypted_text)
-```
-
-### Sending Data Over the Network
-
-You can send data using `NetWorkWriter.py`, which sends data to the Flask server.
-
-```python
-writer = NetWorkWriter()
-writer.send_data("text to send", "machine_1")
-```
-
-### Saving Data to a Local File
-
-```python
-writer = FileWriter()
-writer.send_data("text to write", "machine_1")
-```
-
-## Security and Responsible Use
-
-Using a keylogger requires great caution and must be done legally. Ensure that you use this system in compliance with all local laws and regulations.
-
-## Further Development
-
-- Improve encryption with a random key per session.
-- Add GUI support for data management.
-- Integrate a database for data storage.
+## Contact
+For further inquiries, reach out via [GitHub](https://github.com/israeljacob/keylogger_project).

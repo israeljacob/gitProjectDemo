@@ -22,7 +22,7 @@ def get_usernames_and_passwords():
     Gets the usernames and passwords of the users.
     :return: The usernames and passwords.
     """
-    with open('../server/usernames_and_passwords.json', 'r') as file:
+    with open('usernames_and_passwords.json', 'r') as file:
         data = json.load(file)
     return jsonify(data), 200
 
