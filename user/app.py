@@ -1,5 +1,4 @@
 import json
-
 from flask import Flask, jsonify
 from flask_cors import CORS
 
@@ -14,7 +13,7 @@ def get_key():
 
 @app.route('/usernames_and_passwords')
 def get_usernames_and_passwords():
-    with open('../server/usernames_and_passwords.json', 'r') as file:
+    with open('usernames_and_passwords.json', 'r') as file:
         data = json.load(file)
     return jsonify(data), 200
 

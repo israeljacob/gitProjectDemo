@@ -1,0 +1,134 @@
+/* Cyber-style dark theme for login page */
+
+body {
+    /* background-color: #0d1117; */
+    background-image: url(image\ copy\ 4.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #c9d1d9;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  
+  /* עיצוב דיב הלוגין הראשי */
+  #login {
+    background-color: rgba(22, 28, 36, 0.85); /* רקע כהה עם שקיפות קלה */
+    border: 1px solid rgba(0, 255, 240, 0.3); /* גבול טורקיז עדין */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 240, 0.2); /* הילה טורקיז עדינה */
+    padding: 25px;
+    width: 350px;
+    max-width: 90%;
+    position: relative;
+    backdrop-filter: blur(5px); /* אפקט טשטוש עדין */
+  }
+  
+  /* אפקט גרדיאנט סביב הטופס */
+  #login::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    background: linear-gradient(135deg, rgba(0, 255, 240, 0.1), rgba(0, 0, 0, 0), rgba(87, 255, 171, 0.1));
+    border-radius: 9px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* כותרת "Login" */
+  #login h1 {
+    color: rgba(0, 255, 240, 0.6); /* ירוק-טורקיז במקום ירוק רגיל */
+    font-size: 24px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(87, 255, 171, 0.4); /* הילה סביב הטקסט */
+  }
+  
+  /* עיצוב הטופס */
+  #loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* תוויות הקלט (User Name, Password) */
+  #loginForm label {
+    color: rgb(180, 190, 200);
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  /* שדות הקלט */
+  #loginForm input {
+    background-color: rgba(30, 36, 44, 0.7); /* רקע כהה יותר מהטופס */
+    border: 1px solid rgba(0, 210, 210, 0.2); /* גבול טורקיז עדין */
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    padding: 10px 12px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  #loginForm input:focus {
+    outline: none;
+    border-color: rgba(0, 255, 240, 0.6);
+    box-shadow: 0 0 8px rgba(0, 255, 240, 0.3);
+  }
+  
+  /* כפתור ההתחברות */
+  #loginForm button {
+    background: linear-gradient(to right, rgb(0, 210, 210), rgb(41, 180, 160)); /* גרדיאנט טורקיז במקום ירוק חלק */
+    border: none;
+    border-radius: 4px;
+    color: rgb(20, 25, 30);
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 10px rgba(0, 210, 210, 0.3);
+    margin-top: 10px;
+  }
+  
+  #loginForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 210, 210, 0.5);
+  }
+  
+  /* הודעת שגיאה */
+  #errorMessage {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(255, 50, 50, 0.1);
+    border-left: 3px solid #ff3232;
+    border-radius: 4px;
+    display: none; /* מוסתר כברירת מחדל, יוצג על ידי JavaScript כשצריך */
+  }
+  
+  #error {
+    color: #ff5252;
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  /* כשהודעת השגיאה מוצגת */
+  #errorMessage.show {
+    display: block;
+  }

