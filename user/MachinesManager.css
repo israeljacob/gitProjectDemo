@@ -27,7 +27,6 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* עיצוב כל קופסת מחשב */
 .computer {
     display: inline-block;
     margin: 20px;
@@ -43,14 +42,12 @@ h1 {
     overflow: hidden;
 }
 
-/* אפקט גלישה כאשר העכבר על המחשב */
 .computer:hover {
     transform: scale(1.08);
     box-shadow: 0 12px 24px rgba(0, 255, 255, 0.5);
     background: rgba(0, 255, 255, 0.15);
 }
 
-/* קו זוהר עדין */
 .computer::before {
     content: "";
     position: absolute;
@@ -67,7 +64,6 @@ h1 {
     opacity: 1;
 }
 
-/* עיצוב לתמונת המחשב */
 .computer img {
     width: 90px;
     height: 90px;
@@ -75,12 +71,10 @@ h1 {
     transition: transform 0.3s;
 }
 
-/* בעת מעבר עכבר התמונה זזה קלות */
 .computer:hover img {
     transform: scale(1.1);
 }
 
-/* טקסט המידע של המחשב */
 .computer-info {
     margin-top: 10px;
     font-size: 16px;
