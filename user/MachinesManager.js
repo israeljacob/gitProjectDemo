@@ -62,7 +62,7 @@ function addListToElement(machinesList, ownersList) {
         computerDiv.className = "computer";
         computerDiv.innerHTML = `
             <img src="computer.png" alt="computer icon">
-            
+           
             <div class="computer-info">machine ${i + 1}</div>
             <div class="computer-info">User: ${machinesList[i]}</div>
             <div class="computer-info">MAC: ${ownersList[i]}</div>
