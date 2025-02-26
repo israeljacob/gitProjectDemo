@@ -1,12 +1,8 @@
-import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import logging
 from pathlib import Path
-
-# from utilities import file_utils
 from utilities.file_utils import *
-
 from utilities.help_utils import *
 from utilities.config import *
 from utilities.encryption_utils import *
