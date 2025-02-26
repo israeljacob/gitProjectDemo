@@ -2,6 +2,7 @@ body {
     font-family: 'Consolas', monospace;
     direction: rtl;
     text-align: center;
+
     background: linear-gradient(135deg, #0d1117, #112233);
     color: rgba(0, 255, 240, 0.8);
     padding: 20px;
@@ -11,7 +12,7 @@ body {
 .container {
     max-width: 800px;
     margin: auto;
-    background: #161b22;
+    background: rgba(22, 27, 34, 0.85); /* שקיפות קלה */
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
