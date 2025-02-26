@@ -69,10 +69,29 @@ function addListToElement(machinesList, ownersList) {
     }
 }
 
+function applyFilter() {
+    const nameFilter = document.getElementById("nameFilter").value.toLowerCase();
+    const macFilter = document.getElementById("macFilter").value.toLowerCase();
+    const listElement = document.getElementById("machine_list_ul");
+    const listItems = listElement.getElementsByTagName("li");
+
+    for (let li of listItems) {
+        const text = li.textContent.toLowerCase();
+        if (text.includes(nameFilter) && text.includes(macFilter)) {
+            li.style.display = "";
+        } else {
+            li.style.display = "none";
+        }
+    }
+}
+
+
 /**
  * Main function to fetch the key, decrypt machine names, and populate the list
  */
 async function main(){
+    document.getElementById("nameFilter").addEventListener("input", applyFilter);
+    document.getElementById("macFilter").addEventListener("input", applyFilter);
     const keyObject = await fetchKey();
     key = keyObject.key;
     let machinesList = await fetchMachinesList();
