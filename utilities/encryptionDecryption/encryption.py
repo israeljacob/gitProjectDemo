@@ -1,5 +1,9 @@
 
 class Encryption:
+    """
+    Encrypts text using XOR with a single-character key.
+    """
+
     def __init__(self,key):
         self.key = key
 
