@@ -56,7 +56,8 @@ def list_machines():
         return jsonify([]), 400
     names_of_owners = get_list_of_owners(machines)
     encrypted_owners = encrypt_data(names_of_owners)
-    return jsonify(encrypted_owners),200
+    encrypted_machines = encrypt_data(machines)
+    return jsonify(encrypted_owners, encrypted_machines),200
 
 @app.route('/api/computer_data/<owner_name>', methods=['GET'])
 def computer_data(owner_name):
