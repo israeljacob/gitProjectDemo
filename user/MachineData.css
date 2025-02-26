@@ -21,6 +21,28 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
 }
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    direction: rtl;
+    font-size: 16px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+input {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(20, 20, 20, 0.5);
+    border-radius: 5px;
+    background: #21262d;
+    color: white;
+}
 th, td {
     padding: 12px;
     border: 1px solid #30363d;
