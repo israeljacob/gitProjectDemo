@@ -7,7 +7,6 @@ from logger.writer.FileWriter import FileWriter
 from logger.writer.NetWorkWriter import NetWorkWriter
 from time import sleep
 from datetime import datetime
-import uuid
 import logging
 
 logging.basicConfig(filename='../../utilities/log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
