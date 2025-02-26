@@ -62,7 +62,7 @@ function addListToElement(machinesList, ownersList) {
             const button = document.createElement('button');
             li.textContent = machinesList[j] + '    ' + ownersList[j];
             button.textContent = 'get data';
-            button.addEventListener('click', () => {getMachineData(li, button, machine)});
+            button.addEventListener('click', () => {getMachineData(li, button, machinesList[j])});
             listElement.appendChild(li);
             li.appendChild(button);
         }
