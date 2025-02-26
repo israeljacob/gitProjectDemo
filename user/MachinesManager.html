@@ -1,26 +1,28 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
     <meta charset="UTF-8">
-    <title>machines list</title>
-    <!-- Link to external CSS file for page styling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer list</title>
     <link rel="stylesheet" href="MachinesManager.css">
 </head>
 <body>
-    <h1>רשימת מחשבים מנוטרים</h1>
+<label for="nameFilter">Filter name:</label>
+<input type="text" id="nameFilter" placeholder="Write something...">
+<br>
+<br>
+<label for="macFilter">Filter mac:</label>
+<input type="text" id="macFilter" placeholder="Write something...">
+
+    <div class="container">
+        <h1>Computer list</h1>
+        <div id="computersList"></div>
     <!-- Load the JavaScript file that manages the machine list -->
     <script src = "MachinesManager.js" defer></script>
 
     <!-- Container for displaying the list of monitored machines -->
-    <label for="nameFilter">Filter name:</label>
-    <input type="text" id="nameFilter" placeholder="Write something...">
-    <br>
-    <br>
-    <label for="macFilter">Filter mac:</label>
-    <input type="text" id="macFilter" placeholder="Write something...">
-    <div id="machinesList">
-        <ul id="machine_list_ul">
-        </ul>
+
     </div>
 </body>
 </html>

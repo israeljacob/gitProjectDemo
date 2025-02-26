@@ -2,6 +2,10 @@
  * Fetches the list of encrypted machine names from the server
  * @returns {Promise<Array>} List of encrypted machine names
  */
+/**
+ * Fetches the list of encrypted machine names from the server
+ * @returns {Promise<Array>} List of encrypted machine names
+ */
 async function fetchMachinesList(){
     const list = await fetch('http://localhost:5000/api/list_machines_target_get');
     return list.json();
@@ -34,11 +38,10 @@ function decrypt(text, key) {
 
 /**
  * Fetches and stores machine data for a selected owner
- * @param {HTMLElement} li - List item element
- * @param {HTMLElement} button - Button element
+ * @param {HTMLElement} compDiv - Computer div element
  * @param {string} ownerName - Name of the machine owner
  */
-async function getMachineData(li, button, ownerName) {
+async function getMachineData(compDiv, ownerName) {
     let data = await fetch('http://localhost:5000/api/computer_data/' + ownerName);
     data = await data.json();
 
@@ -52,38 +55,39 @@ async function getMachineData(li, button, ownerName) {
  * @param {Array<string>} machinesList - List of decrypted machine names
  */
 function addListToElement(machinesList, ownersList) {
-    const listElement = document.getElementById('machine_list_ul');
-    while (listElement && listElement.firstChild){
-        listElement.removeChild(listElement.firstChild);
-    }
-    if (listElement){
-        for (let j = 0; j < machinesList.length; j++){
-            const li = document.createElement('li');
-            const button = document.createElement('button');
-            li.textContent = machinesList[j] + '    ' + ownersList[j];
-            button.textContent = 'get data';
-            button.addEventListener('click', () => {getMachineData(li, button, machinesList[j])});
-            listElement.appendChild(li);
-            li.appendChild(button);
-        }
+    const container = document.getElementById("computersList");
+    container.innerHTML = ""; // Reset the list before adding new items
+    for (let i = 0; i < machinesList.length; i++) {
+        const computerDiv = document.createElement("div");
+        computerDiv.className = "computer";
+        computerDiv.innerHTML = `
+            <img src="https://img.icons8.com/ios-filled/100/58a6ff/computer.png" alt="computer icon">
+            <div class="computer-info">computer ${i + 1}</div>
+            <div class="computer-info">owner: ${machinesList[i]}</div>
+            <div class="computer-info">MAC: ${ownersList[i]}</div>
+        `;
+        computerDiv.addEventListener('click', () => { getMachineData(computerDiv, machinesList[i]); });
+        container.appendChild(computerDiv);
     }
 }
 
 function applyFilter() {
     const nameFilter = document.getElementById("nameFilter").value.toLowerCase();
     const macFilter = document.getElementById("macFilter").value.toLowerCase();
-    const listElement = document.getElementById("machine_list_ul");
-    const listItems = listElement.getElementsByTagName("li");
+    const computers = document.querySelectorAll("#computersList .computer");
 
-    for (let li of listItems) {
-        const text = li.textContent.toLowerCase();
-        if (text.includes(nameFilter) && text.includes(macFilter)) {
-            li.style.display = "";
+    computers.forEach(computer => {
+        const ownerText = computer.querySelector(".computer-info:nth-child(3)").textContent.toLowerCase();
+        const macText = computer.querySelector(".computer-info:nth-child(4)").textContent.toLowerCase();
+
+        if (ownerText.includes(nameFilter) && macText.includes(macFilter)) {
+            computer.style.display = "block";
         } else {
-            li.style.display = "none";
+            computer.style.display = "none";
         }
-    }
+    });
 }
+
 
 
 /**
@@ -93,10 +97,10 @@ async function main(){
     document.getElementById("nameFilter").addEventListener("input", applyFilter);
     document.getElementById("macFilter").addEventListener("input", applyFilter);
     const keyObject = await fetchKey();
-    key = keyObject.key;
+    const key = keyObject.key;
     let machinesList = await fetchMachinesList();
-    let ownersList = machinesList[1]
-    machinesList = machinesList[0]
+    let ownersList = machinesList[1];
+    machinesList = machinesList[0];
     machinesList = machinesList.map(machine => decrypt(machine, key));
     ownersList = ownersList.map(machine => decrypt(machine, key));
     addListToElement(machinesList, ownersList);
