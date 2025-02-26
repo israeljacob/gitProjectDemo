@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -6,23 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer list</title>
     <link rel="stylesheet" href="MachinesManager.css">
+    <link rel="stylesheet" href="menu.css">
+    
 </head>
 <body>
-<label for="nameFilter">Filter name:</label>
-<input type="text" id="nameFilter" placeholder="Write something...">
-<br>
-<br>
-<label for="macFilter">Filter mac:</label>
-<input type="text" id="macFilter" placeholder="Write something...">
+    <!--menu hamburger-->
+    <div class="menu">
+        <button class="hamburger">☰</button>
+        <ul class="menu-items">
+            <li><a href="MachinesManager.html">Home</a></li>
+            <li><a href="MachinesManager.html">Computer list</a></li>
+            <li><a href="login.html">log out</a></li>
+        </ul>
+    </div>
+    <label for="nameFilter">Filter name:</label>
+    <input type="text" id="nameFilter" placeholder="Write something...">
+    <br><br>
+    <label for="macFilter">Filter mac:</label>
+    <input type="text" id="macFilter" placeholder="Write something...">
 
     <div class="container">
         <h1>Computer list</h1>
         <div id="computersList"></div>
-    <!-- Load the JavaScript file that manages the machine list -->
-    <script src = "MachinesManager.js" defer></script>
-
-    <!-- Container for displaying the list of monitored machines -->
-
     </div>
+
+    <script src="MachinesManager.js" defer></script>
+    <script src="menu.js" defer></script>
 </body>
 </html>

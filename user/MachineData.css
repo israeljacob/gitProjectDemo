@@ -52,9 +52,9 @@ th {
 button {
     background: none;
     border: none;
-    color: #58a6ff;
+    color: rgb(0, 210, 210);;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     padding: 5px;
     text-decoration: none;
 }

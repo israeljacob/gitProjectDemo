@@ -52,8 +52,9 @@ h1 {
 
 .computer-info {
     margin-top: 10px;
-    font-size: 14px;
-    color: rgb(0, 210, 210);
+    font-size: 20px;
+    /* color: rgb(0, 210, 210); */
+    color: white;
 }
 
 

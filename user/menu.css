@@ -1,0 +1,42 @@
+.menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+.hamburger {
+    color: white;
+    cursor: pointer;
+    font-size: 30px;
+    background: none;
+    border: none;
+    padding: 10px;
+    display: block;
+}
+.menu a:hover {
+    background: #575757;
+}
+.menu-items {
+    display: none;
+    background: #333;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 150px;
+}
+.menu-items li {
+    margin: 10px 0;
+}
+.menu-items a {
+    text-decoration: none;
+    color: rgb(0, 210, 210);;
+    display: block;
+    padding: 5px;
+}
+.menu.open .menu-items {
+    display: block;
+}

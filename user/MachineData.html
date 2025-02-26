@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <title>Top Secret Project</title>
   <link rel="stylesheet" href="MachineData.css">
+  <link rel="stylesheet" href="menu.css">
   <!-- This is the main HTML file for displaying machine data -->
 </head>
 <body>
+<!--menu hamburger-->
+<div class="menu">
+  <button class="hamburger">☰</button>
+  <ul class="menu-items">
+      <li><a href="MachinesManager.html">Home</a></li>
+      <li><a href="MachinesManager.html">Computer list</a></li>
+      <li><a href="login.html">log out</a></li>
+  </ul>
+</div>
   <!-- JavaScript file is linked here to handle machine data logic -->
   <script src="MachineData.js" defer></script>
+  <script src="menu.js" defer></script>
 
    <div class="filter-container">
     <label for="startDate">Start Date:</label>
