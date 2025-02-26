@@ -1,5 +1,5 @@
 import sys
-from encryptionDecryption import Encryption
+from utilities.encryptionDecryption import Encryption
 
 def main():
     data = sys.argv

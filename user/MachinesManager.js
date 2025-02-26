@@ -1,38 +1,44 @@
-let key;
-
+/**
+ * Fetches the list of encrypted machine names from the server
+ * @returns {Promise<Array>} List of encrypted machine names
+ */
 async function fetchMachinesList(){
-    let list = await fetch('http://localhost:5000/api/list_machines_target_get');
+    const list = await fetch('http://localhost:5000/api/list_machines_target_get');
     return list.json();
 }
 
+/**
+ * Fetches the encryption key from the server
+ * @returns {Promise<Object>} Object containing the encryption key
+ */
 async function fetchKey(){
-    let key = await fetch('http://localhost:8000/key');
+    const key = await fetch('http://localhost:8000/key');
     return key.json();
 }
 
+/**
+ * Decrypts a given encrypted string using a provided key
+ * @param {string} text - Encrypted text
+ * @param {string} key - Encryption key
+ * @returns {string} Decrypted text
+ */
 function decrypt(text, key) {
     let decrypted = [];
     for (let i = 0; i < text.length; i++) {
-        let decryptedNum = text.charCodeAt(i) ^ key.charCodeAt(0);
-        let decryptedChar = String.fromCharCode(decryptedNum);
+        const decryptedNum = text.charCodeAt(i) ^ key.charCodeAt(0);
+        const decryptedChar = String.fromCharCode(decryptedNum);
         decrypted.push(decryptedChar);
     }
     return decrypted.join('');
 }
 
-// function extractData(data){
-//     const ownerName = Object.keys(data);
-//     const fileName = Object.keys(data[ownerName]);
-//     const timeStamps = Object.keys(data[ownerName][fileName]);
-//     let finalData = [];
-//     for (let i = 0; i < timeStamps.length; i++) {
-//         finalData.push(data[ownerName][fileName][timeStamps[i]]);
-//     }
-//     return [fileName, timeStamps, finalData];
-// }
-
+/**
+ * Fetches and stores machine data for a selected owner
+ * @param {HTMLElement} li - List item element
+ * @param {HTMLElement} button - Button element
+ * @param {string} ownerName - Name of the machine owner
+ */
 async function getMachineData(li, button, ownerName) {
-
     let data = await fetch('http://localhost:5000/api/computer_data/' + ownerName);
     data = await data.json();
 
@@ -41,6 +47,10 @@ async function getMachineData(li, button, ownerName) {
     window.location.href = 'MachineData.html';
 }
 
+/**
+ * Populates a list element with machine names and buttons
+ * @param {Array<string>} machinesList - List of decrypted machine names
+ */
 function addListToElement(machinesList) {
     const listElement = document.getElementById('machine_list_ul');
     while (listElement && listElement.firstChild){
@@ -59,6 +69,9 @@ function addListToElement(machinesList) {
     }
 }
 
+/**
+ * Main function to fetch the key, decrypt machine names, and populate the list
+ */
 async function main(){
     const keyObject = await fetchKey();
     key = keyObject.key;

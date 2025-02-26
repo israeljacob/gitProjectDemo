@@ -1,4 +1,4 @@
-from writer.IWriter import IWriter
+from logger.writer.IWriter import IWriter
 
 class FileWriter(IWriter):
     def send_data(self, data: str, machine_name: str) -> None:

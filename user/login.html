@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <!-- This is the login page for user authentication -->
+</head>
+
+<body>
+<!-- JavaScript file for handling login logic -->
+<script src="login.js" defer></script>
+
+<div id="login">
+  <h1>Login</h1>
+
+  <!-- Login form with username and password fields -->
+  <form id="loginForm" onsubmit="submitDetails(event)">
+    <label for="username">User Name:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Connect</button>
+  </form>
+
+  <!-- Error message for incorrect login details -->
+  <div id="errorMessage">
+    <p id="error">
+      One of the details is incorrect. Please try again.
+    </p>
+  </div>
+</div>
+</body>
+</html>
