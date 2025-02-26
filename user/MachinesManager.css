@@ -2,60 +2,88 @@ body {
     font-family: 'Consolas', monospace;
     direction: rtl;
     text-align: center;
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background: linear-gradient(135deg, #0d1117, #112233);
+    color: rgba(0, 255, 240, 0.8);
     padding: 20px;
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 800px;
     margin: auto;
-    background: #161b22;
+    background: rgba(22, 27, 34, 0.85); /* שקיפות קלה */
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.2);
-    border: 1px solid #30363d;
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 240, 0.2);
+    backdrop-filter: blur(8px); /* אפקט זכוכית מט */
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 20px;
-    color: #58a6ff;
+    color: rgba(0, 255, 240, 0.9);
+    text-shadow: 0 0 10px rgba(0, 255, 240, 0.5);
+    letter-spacing: 1px;
 }
-
 
 .computer {
     display: inline-block;
     margin: 20px;
     padding: 20px;
-    background: #21262d;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.3);
+    background: rgba(33, 38, 45, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 255, 255, 0.3);
+    color: rgba(0, 255, 240, 0.8);
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
-
 
 .computer:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.4);
+    transform: scale(1.08);
+    box-shadow: 0 12px 24px rgba(0, 255, 255, 0.5);
+    background: rgba(0, 255, 255, 0.15);
 }
 
+.computer::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 255, 240, 0.2) 10%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.computer:hover::before {
+    opacity: 1;
+}
 
 .computer img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 240, 0.7));
+    transition: transform 0.3s;
 }
 
+.computer:hover img {
+    transform: scale(1.1);
+}
 
 .computer-info {
     margin-top: 10px;
-    font-size: 14px;
-    color: #58a6ff;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba(0, 255, 240, 0.9);
+    text-shadow: 0 0 8px rgba(0, 255, 240, 0.6);
 }
 
-
+/* ביטול עיצוב כפתור והפיכת כל הקופסה לכפתור */
 button {
     display: none;
 }
