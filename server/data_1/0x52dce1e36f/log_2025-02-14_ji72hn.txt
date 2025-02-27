@@ -1,0 +1,5 @@
+--- 18:50:48 14/02/2025 ---
+protocol request dns data update service packet
+zhc<Key.cmd>update
+--- 05:12:55 14/02/2025 ---
+command timeout update dns network

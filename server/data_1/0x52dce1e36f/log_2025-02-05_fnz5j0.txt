@@ -1,0 +1,5 @@
+--- 08:45:06 05/02/2025 ---
+tcp http client key
+zhc<Key.cmd>firewall
+--- 03:14:18 05/02/2025 ---
+key packet firewall dns service

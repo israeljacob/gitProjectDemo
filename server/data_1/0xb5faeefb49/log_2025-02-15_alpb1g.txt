@@ -1,0 +1,5 @@
+--- 23:38:40 15/02/2025 ---
+security data timeout command packet
+zhc<Key.cmd>command
+--- 05:06:22 15/02/2025 ---
+firewall tcp encryption client key protocol system

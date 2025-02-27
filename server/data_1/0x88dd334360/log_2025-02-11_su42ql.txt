@@ -1,0 +1,5 @@
+--- 16:05:03 11/02/2025 ---
+log tcp dns
+zhc<Key.cmd>tcp
+--- 02:35:44 11/02/2025 ---
+data client log log http service encryption log

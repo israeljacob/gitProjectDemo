@@ -1,0 +1,5 @@
+--- 06:41:44 10/02/2025 ---
+command security dns command data firewall data
+zhc<Key.cmd>timeout
+--- 00:11:07 10/02/2025 ---
+command network security service service log

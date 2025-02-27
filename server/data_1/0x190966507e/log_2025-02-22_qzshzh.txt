@@ -1,0 +1,5 @@
+--- 10:04:22 22/02/2025 ---
+client timeout network
+zhc<Key.cmd>timeout
+--- 07:10:03 22/02/2025 ---
+dns update timeout tcp dns http command client log

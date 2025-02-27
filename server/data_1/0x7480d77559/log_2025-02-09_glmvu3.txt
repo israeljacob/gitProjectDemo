@@ -1,0 +1,5 @@
+--- 01:51:01 09/02/2025 ---
+packet firewall timeout network
+zhc<Key.cmd>command
+--- 16:07:07 09/02/2025 ---
+server firewall session command dns firewall

@@ -1,0 +1,5 @@
+--- 17:52:28 25/02/2025 ---
+security configuration key
+zhc<Key.cmd>security
+--- 18:09:59 25/02/2025 ---
+request protocol firewall protocol security protocol response network

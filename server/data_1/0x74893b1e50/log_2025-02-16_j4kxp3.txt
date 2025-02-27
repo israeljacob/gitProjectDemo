@@ -1,0 +1,5 @@
+--- 14:04:42 16/02/2025 ---
+session network system security dns packet
+zhc<Key.cmd>encryption
+--- 09:14:58 16/02/2025 ---
+configuration tcp log dns firewall timeout

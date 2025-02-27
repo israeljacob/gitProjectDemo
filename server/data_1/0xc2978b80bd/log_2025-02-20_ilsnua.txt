@@ -1,0 +1,5 @@
+--- 14:12:35 20/02/2025 ---
+command attack key firewall system command encryption
+zhc<Key.cmd>dns
+--- 20:55:32 20/02/2025 ---
+key configuration command packet packet

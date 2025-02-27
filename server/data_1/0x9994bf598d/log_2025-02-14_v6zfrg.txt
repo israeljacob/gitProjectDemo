@@ -1,0 +1,5 @@
+--- 09:39:49 14/02/2025 ---
+data packet packet
+zhc<Key.cmd>server
+--- 23:30:29 14/02/2025 ---
+key dns log firewall client client firewall

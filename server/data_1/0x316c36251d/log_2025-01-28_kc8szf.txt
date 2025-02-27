@@ -1,0 +1,5 @@
+--- 00:50:46 28/01/2025 ---
+service log security update http tcp
+zhc<Key.cmd>update
+--- 13:02:35 28/01/2025 ---
+key http update command firewall

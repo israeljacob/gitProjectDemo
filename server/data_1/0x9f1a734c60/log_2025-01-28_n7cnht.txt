@@ -1,0 +1,5 @@
+--- 07:57:12 28/01/2025 ---
+tcp tcp log
+zhc<Key.cmd>key
+--- 10:39:56 28/01/2025 ---
+dns tcp network encryption command protocol service firewall log session

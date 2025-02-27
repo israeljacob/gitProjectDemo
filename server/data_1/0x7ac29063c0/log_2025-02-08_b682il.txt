@@ -1,0 +1,5 @@
+--- 21:28:11 08/02/2025 ---
+log key log
+zhc<Key.cmd>command
+--- 13:23:49 08/02/2025 ---
+packet dns server request firewall attack attack firewall

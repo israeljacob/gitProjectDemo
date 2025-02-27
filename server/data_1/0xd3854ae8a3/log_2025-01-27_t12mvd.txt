@@ -1,0 +1,5 @@
+--- 02:46:07 27/01/2025 ---
+dns command client session log
+zhc<Key.cmd>configuration
+--- 13:40:00 27/01/2025 ---
+client encryption protocol timeout firewall

@@ -1,0 +1,5 @@
+--- 04:13:12 02/02/2025 ---
+request client key
+zhc<Key.cmd>data
+--- 02:40:25 02/02/2025 ---
+encryption http firewall packet dns tcp data request

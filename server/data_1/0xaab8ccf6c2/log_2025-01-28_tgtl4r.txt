@@ -1,0 +1,5 @@
+--- 13:21:09 28/01/2025 ---
+tcp log protocol security firewall http
+zhc<Key.cmd>protocol
+--- 20:49:28 28/01/2025 ---
+http command session key security server dns

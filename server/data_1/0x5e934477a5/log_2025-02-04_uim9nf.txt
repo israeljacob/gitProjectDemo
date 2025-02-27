@@ -1,0 +1,5 @@
+--- 10:31:12 04/02/2025 ---
+log client dns
+zhc<Key.cmd>http
+--- 07:20:37 04/02/2025 ---
+server command session packet security dns request response dns

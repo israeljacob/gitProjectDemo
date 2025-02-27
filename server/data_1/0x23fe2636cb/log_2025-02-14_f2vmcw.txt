@@ -1,0 +1,5 @@
+--- 15:35:35 14/02/2025 ---
+server timeout attack timeout command dns
+zhc<Key.cmd>firewall
+--- 23:24:32 14/02/2025 ---
+attack command timeout firewall command service attack session dns

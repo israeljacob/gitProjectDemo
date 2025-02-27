@@ -1,0 +1,5 @@
+--- 01:05:03 06/02/2025 ---
+session dns service log update server key
+zhc<Key.cmd>dns
+--- 18:39:15 06/02/2025 ---
+firewall log dns system timeout packet timeout

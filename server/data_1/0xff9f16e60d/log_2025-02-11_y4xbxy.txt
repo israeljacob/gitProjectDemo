@@ -1,0 +1,5 @@
+--- 17:58:38 11/02/2025 ---
+log system data
+zhc<Key.cmd>update
+--- 16:02:30 11/02/2025 ---
+request firewall command key http encryption log session

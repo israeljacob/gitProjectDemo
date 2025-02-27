@@ -1,0 +1,5 @@
+--- 02:00:58 09/02/2025 ---
+request system tcp command response data
+zhc<Key.cmd>dns
+--- 05:56:29 09/02/2025 ---
+packet service firewall update configuration command firewall

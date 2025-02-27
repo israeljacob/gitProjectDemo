@@ -1,0 +1,5 @@
+--- 08:33:56 09/02/2025 ---
+request packet security
+zhc<Key.cmd>service
+--- 06:43:14 09/02/2025 ---
+log system update configuration client key

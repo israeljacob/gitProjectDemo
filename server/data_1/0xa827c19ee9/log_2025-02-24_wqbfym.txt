@@ -1,0 +1,5 @@
+--- 07:20:50 24/02/2025 ---
+configuration packet security dns firewall response firewall
+zhc<Key.cmd>packet
+--- 15:32:07 24/02/2025 ---
+response configuration tcp dns protocol protocol encryption request

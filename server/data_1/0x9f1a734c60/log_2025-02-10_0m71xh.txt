@@ -1,0 +1,5 @@
+--- 08:45:03 10/02/2025 ---
+command log system
+zhc<Key.cmd>log
+--- 19:31:27 10/02/2025 ---
+protocol configuration http update security

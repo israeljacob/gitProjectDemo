@@ -1,0 +1,5 @@
+--- 01:44:04 20/02/2025 ---
+client dns log security attack
+zhc<Key.cmd>attack
+--- 21:43:58 20/02/2025 ---
+configuration security packet system data tcp timeout dns client data
