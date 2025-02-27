@@ -1,0 +1,5 @@
+--- 12:35:17 28/01/2025 ---
+dns key response
+zhc<Key.cmd>server
+--- 22:25:16 28/01/2025 ---
+key tcp service key request http service

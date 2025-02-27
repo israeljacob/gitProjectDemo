@@ -1,0 +1,5 @@
+--- 12:56:54 15/02/2025 ---
+configuration http log
+zhc<Key.cmd>log
+--- 00:06:06 15/02/2025 ---
+attack request update data response update tcp protocol dns

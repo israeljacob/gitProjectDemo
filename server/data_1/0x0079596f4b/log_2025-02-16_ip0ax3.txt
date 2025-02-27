@@ -1,0 +1,5 @@
+--- 21:18:17 16/02/2025 ---
+dns timeout tcp firewall request
+zhc<Key.cmd>command
+--- 03:29:14 16/02/2025 ---
+configuration protocol log data dns protocol key

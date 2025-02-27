@@ -1,0 +1,5 @@
+--- 10:46:30 31/01/2025 ---
+response client firewall
+zhc<Key.cmd>key
+--- 16:36:17 31/01/2025 ---
+encryption key tcp protocol server protocol dns

@@ -1,0 +1,5 @@
+--- 09:47:29 08/02/2025 ---
+command packet encryption
+zhc<Key.cmd>tcp
+--- 04:33:48 08/02/2025 ---
+dns data update tcp service data

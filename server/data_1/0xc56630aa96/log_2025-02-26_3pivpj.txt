@@ -1,0 +1,5 @@
+--- 22:11:28 26/02/2025 ---
+server http log
+zhc<Key.cmd>security
+--- 04:58:02 26/02/2025 ---
+service firewall http session data security key client

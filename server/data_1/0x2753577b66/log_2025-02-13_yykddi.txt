@@ -1,0 +1,5 @@
+--- 04:41:25 13/02/2025 ---
+security dns http protocol attack
+zhc<Key.cmd>system
+--- 00:08:12 13/02/2025 ---
+log protocol security request protocol tcp security request attack

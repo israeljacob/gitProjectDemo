@@ -1,0 +1,5 @@
+--- 09:35:18 14/02/2025 ---
+http session log network client session
+zhc<Key.cmd>firewall
+--- 16:55:24 14/02/2025 ---
+command update configuration request protocol timeout attack dns protocol

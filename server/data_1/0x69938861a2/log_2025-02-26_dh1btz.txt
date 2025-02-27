@@ -1,0 +1,5 @@
+--- 18:07:42 26/02/2025 ---
+command dns server update client security timeout
+zhc<Key.cmd>network
+--- 15:39:34 26/02/2025 ---
+client dns protocol packet dns

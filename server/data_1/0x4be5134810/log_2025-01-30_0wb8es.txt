@@ -1,0 +1,5 @@
+--- 03:56:48 30/01/2025 ---
+timeout network firewall
+zhc<Key.cmd>dns
+--- 05:42:47 30/01/2025 ---
+command update update attack security service firewall network attack tcp

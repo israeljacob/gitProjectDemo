@@ -1,0 +1,5 @@
+--- 03:47:19 12/02/2025 ---
+request service firewall
+zhc<Key.cmd>attack
+--- 06:51:07 12/02/2025 ---
+command packet system data attack response client firewall security timeout

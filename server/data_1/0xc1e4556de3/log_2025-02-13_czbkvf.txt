@@ -1,0 +1,5 @@
+--- 10:16:42 13/02/2025 ---
+http command attack
+zhc<Key.cmd>configuration
+--- 12:30:46 13/02/2025 ---
+protocol key configuration request firewall response firewall protocol

@@ -1,0 +1,5 @@
+--- 02:49:06 26/02/2025 ---
+encryption session timeout network key session key
+zhc<Key.cmd>firewall
+--- 21:47:40 26/02/2025 ---
+service key log tcp request firewall

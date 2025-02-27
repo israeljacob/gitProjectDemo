@@ -1,0 +1,5 @@
+--- 16:47:31 09/02/2025 ---
+attack response tcp
+zhc<Key.cmd>system
+--- 01:23:16 09/02/2025 ---
+firewall service configuration update protocol configuration

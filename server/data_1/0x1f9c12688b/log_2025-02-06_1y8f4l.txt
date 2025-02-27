@@ -1,0 +1,5 @@
+--- 11:27:05 06/02/2025 ---
+request session response
+zhc<Key.cmd>command
+--- 01:53:45 06/02/2025 ---
+command update attack security firewall

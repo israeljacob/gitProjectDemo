@@ -1,0 +1,5 @@
+--- 03:40:14 08/02/2025 ---
+session command key firewall
+zhc<Key.cmd>protocol
+--- 13:31:57 08/02/2025 ---
+server log response tcp server attack response command

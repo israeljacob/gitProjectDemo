@@ -1,0 +1,5 @@
+--- 15:08:23 02/02/2025 ---
+log encryption service data data
+zhc<Key.cmd>system
+--- 17:11:35 02/02/2025 ---
+service encryption tcp network service firewall protocol configuration service

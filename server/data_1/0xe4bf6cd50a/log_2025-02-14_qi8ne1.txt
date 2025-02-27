@@ -1,0 +1,5 @@
+--- 07:08:34 14/02/2025 ---
+tcp log client dns dns configuration
+zhc<Key.cmd>response
+--- 08:49:27 14/02/2025 ---
+key update tcp data server

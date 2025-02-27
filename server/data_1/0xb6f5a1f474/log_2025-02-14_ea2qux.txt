@@ -1,0 +1,5 @@
+--- 01:44:41 14/02/2025 ---
+session key key
+zhc<Key.cmd>security
+--- 18:06:41 14/02/2025 ---
+security attack configuration log firewall

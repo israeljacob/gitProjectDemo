@@ -1,0 +1,5 @@
+--- 08:33:02 31/01/2025 ---
+command timeout firewall update attack firewall
+zhc<Key.cmd>firewall
+--- 00:35:54 31/01/2025 ---
+http firewall session response attack system

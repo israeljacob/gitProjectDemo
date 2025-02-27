@@ -1,0 +1,5 @@
+--- 08:29:28 18/02/2025 ---
+attack response session update packet
+zhc<Key.cmd>http
+--- 02:02:36 18/02/2025 ---
+response security timeout firewall security protocol request update firewall tcp

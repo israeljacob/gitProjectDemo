@@ -1,0 +1,5 @@
+--- 21:53:43 11/02/2025 ---
+timeout protocol tcp packet
+zhc<Key.cmd>protocol
+--- 00:55:27 11/02/2025 ---
+command firewall dns response response timeout dns client log client

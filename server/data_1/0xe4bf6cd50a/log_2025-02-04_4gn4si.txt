@@ -1,0 +1,5 @@
+--- 11:08:01 04/02/2025 ---
+tcp session tcp client log
+zhc<Key.cmd>log
+--- 01:30:23 04/02/2025 ---
+log data client configuration configuration security

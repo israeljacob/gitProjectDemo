@@ -1,0 +1,5 @@
+--- 10:33:25 30/01/2025 ---
+log update firewall
+zhc<Key.cmd>security
+--- 15:00:42 30/01/2025 ---
+client firewall packet data http network request attack http

@@ -1,0 +1,5 @@
+--- 10:41:48 22/02/2025 ---
+service log protocol security session service
+zhc<Key.cmd>timeout
+--- 00:07:34 22/02/2025 ---
+response service dns log system key update session tcp

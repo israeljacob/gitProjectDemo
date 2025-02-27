@@ -1,0 +1,5 @@
+--- 17:30:44 05/02/2025 ---
+log server network data http
+zhc<Key.cmd>encryption
+--- 20:55:27 05/02/2025 ---
+command server encryption attack dns
