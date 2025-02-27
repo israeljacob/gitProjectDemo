@@ -1,5 +1,0 @@
---- 10:34:05 29/01/2025 ---
-timeout firewall encryption protocol log log
-zhc<Key.cmd>tcp
---- 09:26:43 29/01/2025 ---
-key update session firewall response packet service firewall configuration

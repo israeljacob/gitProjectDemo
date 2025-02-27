@@ -1,5 +1,0 @@
---- 14:23:22 08/02/2025 ---
-session tcp service service command dns
-zhc<Key.cmd>network
---- 21:35:21 08/02/2025 ---
-service request tcp dns service attack system network system dns

@@ -1,5 +1,0 @@
---- 11:35:42 03/02/2025 ---
-dns protocol data data dns packet command
-zhc<Key.cmd>log
---- 23:00:26 03/02/2025 ---
-response data network firewall attack attack response encryption

@@ -1,5 +1,0 @@
---- 12:49:37 14/02/2025 ---
-command session firewall security
-zhc<Key.cmd>command
---- 05:24:41 14/02/2025 ---
-command request network log dns

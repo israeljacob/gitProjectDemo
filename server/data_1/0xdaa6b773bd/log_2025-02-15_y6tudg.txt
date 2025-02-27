@@ -1,5 +1,0 @@
---- 21:44:21 15/02/2025 ---
-tcp session configuration
-zhc<Key.cmd>packet
---- 16:49:22 15/02/2025 ---
-tcp system session network firewall data firewall request

@@ -1,5 +1,0 @@
---- 12:40:21 21/02/2025 ---
-security key client server
-zhc<Key.cmd>security
---- 23:39:49 21/02/2025 ---
-update dns update client key update client client data

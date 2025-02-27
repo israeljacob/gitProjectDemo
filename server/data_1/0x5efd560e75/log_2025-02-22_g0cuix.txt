@@ -1,5 +1,0 @@
---- 20:52:34 22/02/2025 ---
-dns server packet response log
-zhc<Key.cmd>packet
---- 04:09:03 22/02/2025 ---
-log request timeout key security dns

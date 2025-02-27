@@ -1,5 +1,0 @@
---- 04:44:33 17/02/2025 ---
-log session packet
-zhc<Key.cmd>encryption
---- 16:42:48 17/02/2025 ---
-session dns dns configuration service system attack

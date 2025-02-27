@@ -1,5 +1,0 @@
---- 07:33:16 04/02/2025 ---
-dns log firewall data dns data
-zhc<Key.cmd>security
---- 17:58:23 04/02/2025 ---
-log response configuration firewall firewall

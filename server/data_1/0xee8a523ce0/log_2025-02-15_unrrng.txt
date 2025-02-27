@@ -1,5 +1,0 @@
---- 22:17:31 15/02/2025 ---
-dns dns dns session
-zhc<Key.cmd>dns
---- 22:15:01 15/02/2025 ---
-update firewall encryption dns server

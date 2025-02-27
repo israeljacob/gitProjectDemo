@@ -1,5 +1,0 @@
---- 00:59:27 01/02/2025 ---
-log dns protocol response encryption
-zhc<Key.cmd>encryption
---- 01:28:28 01/02/2025 ---
-command packet protocol response dns service encryption service encryption

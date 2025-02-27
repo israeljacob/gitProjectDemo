@@ -1,5 +1,0 @@
---- 15:22:18 09/02/2025 ---
-firewall data configuration protocol dns log configuration
-zhc<Key.cmd>security
---- 02:50:19 09/02/2025 ---
-command attack tcp network network protocol log timeout response log

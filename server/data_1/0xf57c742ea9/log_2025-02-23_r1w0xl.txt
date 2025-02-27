@@ -1,5 +1,0 @@
---- 06:46:59 23/02/2025 ---
-tcp http dns update network
-zhc<Key.cmd>timeout
---- 08:17:07 23/02/2025 ---
-update dns firewall server session network

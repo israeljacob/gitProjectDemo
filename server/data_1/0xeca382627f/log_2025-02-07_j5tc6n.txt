@@ -1,5 +1,0 @@
---- 09:38:24 07/02/2025 ---
-request security log key attack response packet
-zhc<Key.cmd>log
---- 10:22:06 07/02/2025 ---
-firewall security tcp key service server protocol security dns attack

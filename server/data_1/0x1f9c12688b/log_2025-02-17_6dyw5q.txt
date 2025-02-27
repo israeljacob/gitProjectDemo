@@ -1,5 +1,0 @@
---- 05:52:31 17/02/2025 ---
-dns log server network
-zhc<Key.cmd>security
---- 03:45:46 17/02/2025 ---
-command tcp data session firewall client client

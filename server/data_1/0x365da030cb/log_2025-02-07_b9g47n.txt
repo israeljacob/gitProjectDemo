@@ -1,5 +1,0 @@
---- 23:23:02 07/02/2025 ---
-dns client packet encryption http
-zhc<Key.cmd>configuration
---- 06:54:12 07/02/2025 ---
-log command dns encryption encryption

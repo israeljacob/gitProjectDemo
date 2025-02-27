@@ -1,5 +1,0 @@
---- 14:43:47 07/02/2025 ---
-configuration packet client update dns dns packet
-zhc<Key.cmd>client
---- 00:52:20 07/02/2025 ---
-client command firewall http security tcp dns system response

@@ -1,5 +1,0 @@
---- 04:18:41 13/02/2025 ---
-configuration log data command dns data dns
-zhc<Key.cmd>firewall
---- 06:10:14 13/02/2025 ---
-client request attack response attack

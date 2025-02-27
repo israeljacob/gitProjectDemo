@@ -1,5 +1,0 @@
---- 15:40:05 07/02/2025 ---
-session encryption response log
-zhc<Key.cmd>data
---- 08:48:37 07/02/2025 ---
-log firewall firewall packet attack packet

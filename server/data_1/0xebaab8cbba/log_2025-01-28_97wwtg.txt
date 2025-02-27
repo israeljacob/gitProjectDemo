@@ -1,5 +1,0 @@
---- 22:57:41 28/01/2025 ---
-server log client update http
-zhc<Key.cmd>command
---- 15:40:23 28/01/2025 ---
-update firewall encryption configuration protocol network tcp

@@ -1,5 +1,0 @@
---- 02:45:19 14/02/2025 ---
-network tcp response configuration
-zhc<Key.cmd>log
---- 08:18:42 14/02/2025 ---
-firewall tcp tcp log security packet

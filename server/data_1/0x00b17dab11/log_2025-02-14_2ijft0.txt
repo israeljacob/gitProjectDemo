@@ -1,5 +1,0 @@
---- 20:37:19 14/02/2025 ---
-data session tcp
-zhc<Key.cmd>network
---- 10:38:33 14/02/2025 ---
-tcp system dns command attack encryption

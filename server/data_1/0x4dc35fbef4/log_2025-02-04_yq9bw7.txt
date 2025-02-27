@@ -1,5 +1,0 @@
---- 04:16:00 04/02/2025 ---
-service firewall system system server
-zhc<Key.cmd>system
---- 01:27:01 04/02/2025 ---
-firewall command service http response protocol server timeout response

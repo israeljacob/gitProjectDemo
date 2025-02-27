@@ -1,5 +1,0 @@
---- 22:50:46 15/02/2025 ---
-dns data log network
-zhc<Key.cmd>configuration
---- 19:16:35 15/02/2025 ---
-encryption firewall request firewall system

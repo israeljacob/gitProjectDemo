@@ -1,5 +1,0 @@
---- 22:45:20 05/02/2025 ---
-firewall system update security session request
-zhc<Key.cmd>system
---- 02:36:55 05/02/2025 ---
-dns security tcp service attack log command security command

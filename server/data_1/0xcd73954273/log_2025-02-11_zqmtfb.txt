@@ -1,5 +1,0 @@
---- 04:37:23 11/02/2025 ---
-key dns data encryption command
-zhc<Key.cmd>encryption
---- 04:53:48 11/02/2025 ---
-protocol response security request dns key client command timeout system

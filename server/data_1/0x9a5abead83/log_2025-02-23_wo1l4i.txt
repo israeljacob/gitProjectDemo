@@ -1,5 +1,0 @@
---- 08:17:37 23/02/2025 ---
-firewall service configuration configuration configuration request
-zhc<Key.cmd>packet
---- 20:50:55 23/02/2025 ---
-service command tcp request dns network response

@@ -1,5 +1,0 @@
---- 15:41:23 11/02/2025 ---
-security protocol http
-zhc<Key.cmd>service
---- 04:46:25 11/02/2025 ---
-service protocol firewall http network

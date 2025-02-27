@@ -1,5 +1,0 @@
---- 19:03:05 16/02/2025 ---
-command dns response
-zhc<Key.cmd>packet
---- 13:28:55 16/02/2025 ---
-attack encryption timeout system system log dns command tcp

@@ -1,5 +1,0 @@
---- 19:38:56 31/01/2025 ---
-encryption protocol tcp service update timeout
-zhc<Key.cmd>server
---- 02:25:01 31/01/2025 ---
-command firewall encryption firewall system key system attack timeout

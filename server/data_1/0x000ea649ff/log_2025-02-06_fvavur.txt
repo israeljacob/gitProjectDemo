@@ -1,5 +1,0 @@
---- 14:54:19 06/02/2025 ---
-command data log command key security
-zhc<Key.cmd>tcp
---- 13:42:20 06/02/2025 ---
-log command protocol tcp session update http attack protocol

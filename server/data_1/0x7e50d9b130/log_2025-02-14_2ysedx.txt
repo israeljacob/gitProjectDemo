@@ -1,5 +1,0 @@
---- 03:20:36 14/02/2025 ---
-attack dns log
-zhc<Key.cmd>http
---- 14:20:29 14/02/2025 ---
-firewall data response key command tcp attack http data dns

@@ -1,5 +1,0 @@
---- 14:12:16 10/02/2025 ---
-protocol server configuration firewall
-zhc<Key.cmd>packet
---- 02:53:21 10/02/2025 ---
-firewall service command request dns server configuration service attack log

@@ -1,5 +1,0 @@
---- 17:53:32 05/02/2025 ---
-firewall dns tcp
-zhc<Key.cmd>http
---- 19:14:23 05/02/2025 ---
-dns security system command log http security request
