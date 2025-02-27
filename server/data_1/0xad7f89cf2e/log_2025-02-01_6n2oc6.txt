@@ -1,5 +1,0 @@
---- 18:58:25 01/02/2025 ---
-command service key
-zhc<Key.cmd>key
---- 04:27:55 01/02/2025 ---
-server encryption response packet key log tcp

@@ -1,5 +1,0 @@
---- 00:09:33 12/02/2025 ---
-system log command protocol configuration
-zhc<Key.cmd>http
---- 18:22:41 12/02/2025 ---
-client system key log data tcp key server

@@ -1,5 +1,0 @@
---- 03:15:21 28/01/2025 ---
-security security log
-zhc<Key.cmd>firewall
---- 19:16:06 28/01/2025 ---
-log session key attack data

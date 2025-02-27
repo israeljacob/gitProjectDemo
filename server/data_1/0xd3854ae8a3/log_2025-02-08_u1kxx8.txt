@@ -1,5 +1,0 @@
---- 09:18:19 08/02/2025 ---
-log encryption tcp
-zhc<Key.cmd>service
---- 10:55:43 08/02/2025 ---
-response command firewall packet network request

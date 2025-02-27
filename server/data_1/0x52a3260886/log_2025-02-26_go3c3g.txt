@@ -1,5 +1,0 @@
---- 09:56:20 26/02/2025 ---
-protocol service system http
-zhc<Key.cmd>client
---- 08:31:23 26/02/2025 ---
-firewall dns response configuration tcp log security client

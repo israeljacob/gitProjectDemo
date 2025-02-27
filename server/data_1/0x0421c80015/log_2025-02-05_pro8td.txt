@@ -1,5 +1,0 @@
---- 08:31:42 05/02/2025 ---
-protocol tcp http
-zhc<Key.cmd>response
---- 08:36:02 05/02/2025 ---
-system dns http server protocol response

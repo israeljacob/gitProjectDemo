@@ -1,5 +1,0 @@
---- 05:12:06 02/02/2025 ---
-dns session timeout http
-zhc<Key.cmd>network
---- 04:04:35 02/02/2025 ---
-log protocol firewall response key key response command packet dns

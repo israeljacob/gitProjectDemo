@@ -1,5 +1,0 @@
---- 14:17:03 19/02/2025 ---
-http timeout dns update configuration key
-zhc<Key.cmd>dns
---- 13:53:29 19/02/2025 ---
-command network packet packet dns dns firewall http system

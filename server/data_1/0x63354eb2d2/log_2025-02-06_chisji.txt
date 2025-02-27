@@ -1,5 +1,0 @@
---- 04:14:54 06/02/2025 ---
-firewall request service dns
-zhc<Key.cmd>request
---- 07:39:02 06/02/2025 ---
-system update session response tcp protocol security tcp

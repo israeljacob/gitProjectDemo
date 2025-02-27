@@ -1,5 +1,0 @@
---- 17:27:18 26/02/2025 ---
-timeout firewall security session timeout
-zhc<Key.cmd>data
---- 05:51:40 26/02/2025 ---
-data data command dns data key

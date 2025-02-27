@@ -1,5 +1,0 @@
---- 00:51:37 13/02/2025 ---
-command security timeout
-zhc<Key.cmd>request
---- 00:08:59 13/02/2025 ---
-firewall key request command tcp

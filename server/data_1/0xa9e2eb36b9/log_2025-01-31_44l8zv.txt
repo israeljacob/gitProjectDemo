@@ -1,5 +1,0 @@
---- 00:11:55 31/01/2025 ---
-attack dns server
-zhc<Key.cmd>attack
---- 19:54:45 31/01/2025 ---
-log tcp key request server client tcp

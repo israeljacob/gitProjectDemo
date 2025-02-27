@@ -1,5 +1,0 @@
---- 13:12:56 30/01/2025 ---
-update encryption attack
-zhc<Key.cmd>encryption
---- 17:07:20 30/01/2025 ---
-firewall encryption protocol command key

@@ -1,5 +1,0 @@
---- 12:01:58 30/01/2025 ---
-system tcp timeout attack client
-zhc<Key.cmd>firewall
---- 03:25:05 30/01/2025 ---
-system key configuration network attack server

@@ -1,5 +1,0 @@
---- 08:34:19 16/02/2025 ---
-service network http security network packet update
-zhc<Key.cmd>network
---- 10:52:09 16/02/2025 ---
-command protocol log session dns protocol firewall

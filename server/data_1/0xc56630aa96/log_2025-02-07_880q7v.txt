@@ -1,5 +1,0 @@
---- 12:45:36 07/02/2025 ---
-session tcp log command packet network
-zhc<Key.cmd>tcp
---- 16:35:35 07/02/2025 ---
-protocol firewall timeout client log http http update encryption

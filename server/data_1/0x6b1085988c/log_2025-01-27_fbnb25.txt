@@ -1,5 +1,0 @@
---- 01:20:32 27/01/2025 ---
-log log security server key response
-zhc<Key.cmd>session
---- 03:46:27 27/01/2025 ---
-firewall dns packet update tcp timeout timeout session

@@ -1,5 +1,0 @@
---- 23:06:21 29/01/2025 ---
-command packet dns network timeout session packet
-zhc<Key.cmd>data
---- 08:47:39 29/01/2025 ---
-attack configuration firewall command command log protocol packet

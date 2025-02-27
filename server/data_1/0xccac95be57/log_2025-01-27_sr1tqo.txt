@@ -1,5 +1,0 @@
---- 17:54:52 27/01/2025 ---
-firewall key protocol
-zhc<Key.cmd>update
---- 23:34:03 27/01/2025 ---
-attack key security client configuration tcp data log log

@@ -1,5 +1,0 @@
---- 16:52:46 01/02/2025 ---
-attack request system attack firewall request
-zhc<Key.cmd>attack
---- 00:47:23 01/02/2025 ---
-log tcp packet server configuration

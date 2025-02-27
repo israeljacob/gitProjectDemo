@@ -1,5 +1,0 @@
---- 02:09:14 03/02/2025 ---
-attack firewall protocol session service timeout
-zhc<Key.cmd>data
---- 20:14:16 03/02/2025 ---
-attack dns data log dns timeout

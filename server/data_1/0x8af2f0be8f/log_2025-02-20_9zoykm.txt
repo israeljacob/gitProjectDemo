@@ -1,5 +1,0 @@
---- 18:37:15 20/02/2025 ---
-system firewall attack system
-zhc<Key.cmd>data
---- 13:37:45 20/02/2025 ---
-configuration security update command packet log configuration network security

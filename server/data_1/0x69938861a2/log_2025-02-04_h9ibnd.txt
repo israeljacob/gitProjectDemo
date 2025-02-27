@@ -1,5 +1,0 @@
---- 14:15:29 04/02/2025 ---
-http attack network
-zhc<Key.cmd>configuration
---- 17:19:52 04/02/2025 ---
-response firewall dns network dns

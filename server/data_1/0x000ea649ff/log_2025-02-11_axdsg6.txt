@@ -1,5 +1,0 @@
---- 15:19:32 11/02/2025 ---
-response client request dns
-zhc<Key.cmd>timeout
---- 01:06:03 11/02/2025 ---
-dns encryption protocol command request encryption tcp protocol

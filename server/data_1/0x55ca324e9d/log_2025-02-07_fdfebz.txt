@@ -1,5 +1,0 @@
---- 12:56:59 07/02/2025 ---
-command dns session update
-zhc<Key.cmd>update
---- 02:09:30 07/02/2025 ---
-timeout firewall attack command tcp system attack

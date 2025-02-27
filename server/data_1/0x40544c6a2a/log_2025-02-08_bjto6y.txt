@@ -1,5 +1,0 @@
---- 09:14:53 08/02/2025 ---
-log dns dns
-zhc<Key.cmd>attack
---- 06:25:00 08/02/2025 ---
-system update system dns client key request update encryption encryption
