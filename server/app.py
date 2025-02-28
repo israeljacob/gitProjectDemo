@@ -31,7 +31,7 @@ def upload_data():
     try:
         machine_name = data[:14].decode('utf-8')
         machine_folder = create_machine_folder(machine_name)
-        decrypted_data =  Decryption(KEY).decrypt(data[15:])
+        decrypted_data =  encrypt_data(data[15:])
     except Exception as e:
         logging.error(e)
         return jsonify({'status': False, 'message': str(e)}), 400
@@ -67,8 +67,8 @@ def list_machines():
     if not machines:
         return jsonify([]), 400
     names_of_owners = get_list_of_owners(machines)
-    encrypted_owners = encrypt_data(names_of_owners)
-    encrypted_machines = encrypt_data(machines)
+    encrypted_owners = [encrypt_data(owner) for owner in names_of_owners]
+    encrypted_machines = [encrypt_data(machine) for machine in machines]
     return jsonify(encrypted_owners, encrypted_machines),200
 
 @app.route('/api/computer_data/<owner_name>', methods=['GET'])

