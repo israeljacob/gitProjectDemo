@@ -9,6 +9,5 @@ class NetWorkWriter(IWriter):
         with open('../config.json', 'r') as config_file:
             self.url = json.load(config_file)['post_link']
 
-    def send_data(self, data: str, machine_name: str) -> None:
-        data = machine_name + '\n' + data
-        requests.post(self.url, data=data)
+    def send_data(self, data: str) -> None:
+        response = requests.post(self.url, data=data)

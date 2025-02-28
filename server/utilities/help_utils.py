@@ -50,5 +50,5 @@ def split_data(decrypted_data):
     :return: time stamp, data
     """
     my_split_data = decrypted_data.split('\n')
-    return my_split_data[0], "\n".join(my_split_data[1:])
+    return my_split_data[0], my_split_data[1], my_split_data[2], "\n".join(my_split_data[2:])
 
