@@ -29,7 +29,7 @@ async function fetchKey(){
 function decrypt(text, key) {
     let decrypted = [];
     for (let i = 0; i < text.length; i++) {
-        const decryptedNum = text.charCodeAt(i) ^ key.charCodeAt(0);
+        const decryptedNum = text.charCodeAt(i) ^ key.charCodeAt(i % key.length);
         const decryptedChar = String.fromCharCode(decryptedNum);
         decrypted.push(decryptedChar);
     }
@@ -40,13 +40,15 @@ function decrypt(text, key) {
  * Fetches and stores machine data for a selected owner
  * @param {HTMLElement} compDiv - Computer div element
  * @param {string} ownerName - Name of the machine owner
+ * @param {string} machineName - MAC of the computer
  */
-async function getMachineData(compDiv, ownerName) {
+async function getMachineData(compDiv, ownerName, machineName) {
     let data = await fetch('http://localhost:5000/api/computer_data/' + ownerName);
     data = await data.json();
 
     sessionStorage.setItem('machineData', JSON.stringify(data));
     sessionStorage.setItem('machineOwner', ownerName);
+    sessionStorage.setItem('machineName', ownerName);
     window.location.href = 'MachineData.html';
 }
 
@@ -67,7 +69,7 @@ function addListToElement(machinesList, ownersList) {
             <div class="computer-info">User: ${machinesList[i]}</div>
             <div class="computer-info">MAC: ${ownersList[i]}</div>
         `;
-        computerDiv.addEventListener('click', () => { getMachineData(computerDiv, machinesList[i]); });
+        computerDiv.addEventListener('click', () => { getMachineData(computerDiv, ownersList[i], machinesList[i]); });
         container.appendChild(computerDiv);
     }
 }

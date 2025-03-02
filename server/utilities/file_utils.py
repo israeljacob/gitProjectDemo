@@ -1,8 +1,12 @@
 import os
 import sys
 from datetime import datetime
+from os.path import split
+from typing import final
+
 sys.path.append('../server/utilities')
 from config import LIST_OF_OWNERS
+from encryption_utils import encrypt_data
 
 DATA_FOLDER = 'data'
 
@@ -21,3 +25,14 @@ def get_machine_name_list():
 def get_machine_name(owner):
     index = LIST_OF_OWNERS.index(owner)
     return get_machine_name_list()[index]
+
+def get_data(computer_name, filename):
+    final_data = dict()
+    with open(os.path.join(DATA_FOLDER, computer_name, filename), 'r') as file:
+        data = '\n\n'.split(file.read())
+        for organ in data:
+            split_data = '\n'.split(organ)
+            final_data.update({encrypt_data(split_data[0].strip('-').strip()):
+                                [encrypt_data(split_data[1]),
+                               encrypt_data(''.join(split_data[2:]))]})
+    return final_data

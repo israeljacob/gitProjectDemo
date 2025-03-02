@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 import logging
-from pathlib import Path
 from utilities.file_utils import *
 from utilities.help_utils import *
 from utilities.config import *
@@ -89,16 +89,13 @@ def computer_data(owner_name):
         computer_name = get_machine_name(owner_name)
     except:
         return jsonify({'status': False, 'message': 'Machine not found'}), 400
-    all_data = dict()
-    all_data_final = dict()
-    folder_path = Path(CURRENT_FOLDER+"/data/" + computer_name)
-    for file in folder_path.iterdir():
-        file_str = str(file)
-        if "log" in file_str:
-            idx_file_name = file_str.find("log_")
-            all_data[file_str[idx_file_name:]] = data_pull(file_str)
-    all_data_final[owner_name] = all_data
-    return jsonify(all_data_final), 200
+    data = ''
+    for filename in os.listdir(os.path.join(DATA_FOLDER, computer_name)):
+        if os.path.isfile(os.path.join(DATA_FOLDER, computer_name, filename)):
+            with open(os.path.join(DATA_FOLDER, computer_name, filename), 'r') as file:
+                data += file.read() + '\n\n'
+
+    return jsonify({"data": encrypt_data(data)}), 200
 
 if __name__ == '__main__':
     app.run(debug=True , host= '0.0.0.0')

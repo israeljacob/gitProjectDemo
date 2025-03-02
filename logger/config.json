@@ -1,0 +1,5 @@
+{
+  "post_link": "http://localhost:5000/api/upload",
+  "sleep_seconds": 2,
+  "writer": "network_writer"
+}
