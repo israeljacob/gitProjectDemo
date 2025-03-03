@@ -5,7 +5,7 @@ from os.path import split
 from typing import final
 
 sys.path.append('../server/utilities')
-from config import LIST_OF_OWNERS
+from utilities.config import LIST_OF_OWNERS
 from encryption_utils import encrypt_data
 
 DATA_FOLDER = 'data'
