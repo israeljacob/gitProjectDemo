@@ -4,118 +4,135 @@
  * @returns {Array} An array containing the file name, timestamps, and final data values.
  */
 function extractData(data){
-    const ownerName = Object.keys(data);
-    const fileNames = Object.keys(data[ownerName]);
-    result = []
-    for(const fileName of fileNames){
-        const timeStamps = Object.keys(data[ownerName][fileName]);
-        let finalData = [];
-        for (let i = 0; i < timeStamps.length; i++) {
-            finalData.push(data[ownerName][fileName][timeStamps[i]]);
-        }
-        result.push([timeStamps, finalData]);
+    let result = []
+    data = data.split('\n\n!@#$%^&*()\n\n');
+    let splitData;
+    let timeStamp;
+    for (const key of data) {
+        splitData = key.split('\n');
+        timeStamp = splitData[0].replace(/-/g, '');
+        let app = splitData[1];
+        let finalData = splitData.slice(2).join('\n');
+        result.push([timeStamp, app, finalData]);
     }
-
     return result;
 }
 
+function decryptData(text, key) {
+    let decrypted = [];
+    for (let i = 0; i < text.length; i++) {
+        const decryptedNum = text.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+        const decryptedChar = String.fromCharCode(decryptedNum);
+        decrypted.push(decryptedChar);
+    }
+    return decrypted.join('');
+}
+
+async function fetchKey(){
+    const key = await fetch('http://localhost:8000/key');
+    return key.json();
+}
+
+async function getData(machineName) {
+    const keyObject = await fetchKey();
+    const key = keyObject.key;
+    let myData = await fetch('http://localhost:5000/api/computer_data/' + machineName);
+    myData = await myData.json();
+    myData = myData.data;
+    return decryptData(myData, key);
+}
+
 /**
- * Retrieves stored machine data and displays it in a table format.
+ * Retrieves stored machine data and updates the table without removing applied filters.
  */
-function setData() {
-    const data = JSON.parse(sessionStorage.getItem('machineData'));
+async function setData() {
     const ownerName = sessionStorage.getItem('machineOwner');
-    console.log("Raw data from sessionStorage:", data);
+    const machineName = sessionStorage.getItem('machineName');
+    let data = await getData(machineName);
 
     const div = document.getElementById('machineData');
-
-    while (div.children && div.children.length > 0) {
-        div.removeChild(div.lastChild);
-    }
+    div.innerHTML = '';
 
     const p = div.appendChild(document.createElement('p'));
     p.textContent = ownerName;
 
     const table = div.appendChild(document.createElement('table'));
+    table.id = 'dataTable';
 
     const headerRow = table.appendChild(document.createElement('tr'));
     const thTimestamp = headerRow.appendChild(document.createElement('th'));
+    const thApp = headerRow.appendChild(document.createElement('th'));
     const thData = headerRow.appendChild(document.createElement('th'));
     thTimestamp.textContent = 'Time stamp';
+    thApp.textContent = 'App';
     thData.textContent = 'Data';
 
     const extractedData = extractData(data);
-    console.log("Extracted Data:", extractedData);
 
     for (let organ of extractedData) {
         const timeStamps = organ[0];
-        const finalDatas = organ[1];
+        const app = organ[1];
+        const finalDatas = organ[2];
 
-        for (let i = 0; i < timeStamps.length; i++) {
-            const tr = table.appendChild(document.createElement('tr'));
-            const tdTime = tr.appendChild(document.createElement('td'));
-            const tdData = tr.appendChild(document.createElement('td'));
-            tdTime.textContent = timeStamps[i];
-            tdData.textContent = finalDatas[i];
-        }
+        const tr = table.appendChild(document.createElement('tr'));
+        const tdTime = tr.appendChild(document.createElement('td'));
+        const tdApp = tr.appendChild(document.createElement('td'));
+        const tdData = tr.appendChild(document.createElement('td'));
+        tdTime.textContent = timeStamps;
+        tdApp.textContent = app;
+        tdData.textContent = finalDatas;
     }
-}
 
-function convertDateFormat(dateString) {
-    if (dateString.includes("/")) {
-        const parts = dateString.split("/");
-        return `${parts[2]}-${parts[1]}-${parts[0]}`;
-    }
-    return dateString;
+    applyFilterData(); // החלת הסינון מחדש לאחר עדכון הנתונים
 }
-
 
 function applyFilterData() {
-    const startDate = document.getElementById("startDate").value;
-    const endDate = document.getElementById("endDate").value;
-    const dataFilter = document.getElementById("dataFilter").value.toLowerCase();
+    const startDate = document.getElementById('startDate').value;
+    const endDate = document.getElementById('endDate').value;
+    const appFilter = document.getElementById('appFilter').value.toLowerCase();
+    const dataFilter = document.getElementById('dataFilter').value.toLowerCase();
 
-    const trs = document.getElementsByTagName('tr');
+    const trs = document.querySelectorAll('#dataTable tr');
 
-    for (let i = 1; i < trs.length; i++) {
+    for (let i = 1; i < trs.length; i++) { // דילוג על שורת הכותרת
         const tds = trs[i].children;
         const timestamp = tds[0].textContent.trim();
-        const date = convertDateFormat(timestamp.split(' ')[1]);
-        const data = tds[1].textContent.toLowerCase();
-
+        const app = tds[1].textContent.toLowerCase();
+        const data = tds[2].textContent.toLowerCase();
 
         let showRow = true;
 
-        if (startDate && endDate) {
-            console.log(date)
-            console.log(startDate)
-            console.log(endDate)
-            if (date < startDate || date > endDate) {
-                showRow = false;
-            }
+        if (startDate && timestamp < startDate.replace(/-/g, '')) {
+            showRow = false;
+        }
+
+        if (endDate && timestamp > endDate.replace(/-/g, '')) {
+            showRow = false;
+        }
+
+        if (appFilter && !app.includes(appFilter)) {
+            showRow = false;
         }
 
         if (dataFilter && !data.includes(dataFilter)) {
             showRow = false;
         }
 
-        trs[i].style.display = showRow ? "" : "none";
+        trs[i].style.display = showRow ? '' : 'none';
     }
 }
 
-
-/**
- * Redirects the user to the Machines Manager page.
- */
 function goToListPage(){
     window.location.href = 'MachinesManager.html';
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    setData();
+document.addEventListener('DOMContentLoaded', async () => {
+    await setData();
 
-    document.getElementById("startDate").addEventListener("input", applyFilterData);
-    document.getElementById("endDate").addEventListener("input", applyFilterData);
-    document.getElementById("dataFilter").addEventListener("input", applyFilterData);
+    document.getElementById('startDate').addEventListener('input', applyFilterData);
+    document.getElementById('endDate').addEventListener('input', applyFilterData);
+    document.getElementById('appFilter').addEventListener('input', applyFilterData);
+    document.getElementById('dataFilter').addEventListener('input', applyFilterData);
+
+    await setData()
 });
-

@@ -1,3 +1,5 @@
+
+
 /**
  * Fetches the list of encrypted machine names from the server
  * @returns {Promise<Array>} List of encrypted machine names
@@ -40,23 +42,20 @@ function decrypt(text, key) {
  * Fetches and stores machine data for a selected owner
  * @param {HTMLElement} compDiv - Computer div element
  * @param {string} ownerName - Name of the machine owner
- * @param {string} machineName - MAC of the computer
+ * @param machineName
  */
 async function getMachineData(compDiv, ownerName, machineName) {
-    let data = await fetch('http://localhost:5000/api/computer_data/' + ownerName);
-    data = await data.json();
-
-    sessionStorage.setItem('machineData', JSON.stringify(data));
     sessionStorage.setItem('machineOwner', ownerName);
-    sessionStorage.setItem('machineName', ownerName);
+    sessionStorage.setItem('machineName', machineName);
     window.location.href = 'MachineData.html';
 }
 
 /**
  * Populates a list element with machine names and buttons
+ * @param ownerList
  * @param {Array<string>} machinesList - List of decrypted machine names
  */
-function addListToElement(machinesList, ownersList) {
+function addListToElement(ownerList, machinesList) {
     const container = document.getElementById("computersList");
     container.innerHTML = ""; // Reset the list before adding new items
     for (let i = 0; i < machinesList.length; i++) {
@@ -66,10 +65,10 @@ function addListToElement(machinesList, ownersList) {
             <img src="computer.png" alt="computer icon">
            
             <div class="computer-info">machine ${i + 1}</div>
-            <div class="computer-info">User: ${machinesList[i]}</div>
-            <div class="computer-info">MAC: ${ownersList[i]}</div>
+            <div class="computer-info">User: ${ownerList[i]}</div>
+            <div class="computer-info">MAC: ${machinesList[i]}</div>
         `;
-        computerDiv.addEventListener('click', () => { getMachineData(computerDiv, ownersList[i], machinesList[i]); });
+        computerDiv.addEventListener('click', () => { getMachineData(computerDiv, ownerList[i], machinesList[i]); });
         container.appendChild(computerDiv);
     }
 }
@@ -109,4 +108,4 @@ async function main(){
     addListToElement(machinesList, ownersList);
 }
 
-document.addEventListener("DOMContentLoaded", main);
+main()
